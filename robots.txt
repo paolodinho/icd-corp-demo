@@ -6,4 +6,4 @@ Disallow: /search/
 Disallow: /wp-json/
 Disallow: /*?replytocom=
 
-Sitemap: http://icdcomvn.local/sitemap.xml
+Sitemap: https://paolodinho.github.io/icd-corp-demo/sitemap.xml
