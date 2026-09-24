@@ -54,13 +54,15 @@
     <p><b>Email</b><br><a href="mailto:khachhang.icd@gmail.com">khachhang.icd@gmail.com</a></p>
     <p><b>Kênh khác</b><br><a href="https://facebook.com/icdgreentech" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@ICD_Greentech" target="_blank" rel="noopener">YouTube</a> · <a href="https://zalo.me/0935482688" target="_blank" rel="noopener">Zalo</a></p>
   </div>
-  <form class="contact-form" method="post" action="https://paolodinho.github.io/icd-corp-demo/wp-admin/admin-post.php" onsubmit="alert(\'Bản xem thử: biểu mẫu chưa hoạt động trên bản tĩnh. / Preview only: the form is disabled.\');return false" onsubmit="alert(\'Bản xem thử: biểu mẫu chưa hoạt động trên bản tĩnh. / Preview only: the form is disabled.\');return false">
+  <form class="contact-form" method="post" enctype="multipart/form-data" action="https://paolodinho.github.io/icd-corp-demo/wp-admin/admin-post.php" onsubmit="alert(\'Bản xem thử: biểu mẫu chưa hoạt động trên bản tĩnh. / Preview only: the form is disabled.\');return false">
         <input type="hidden" name="action" value="icd_contact"><input type="hidden" id="_icd" name="_icd" value="d65d0d17b7" /><input type="hidden" name="_wp_http_referer" value="/lien-he/" />    <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
     <label>Họ và tên *<input name="name" required></label>
     <label>Điện thoại *<input name="phone" required></label>
     <label>Email<input type="email" name="email"></label>
-    <label>Nhu cầu<select name="topic"><option value="Hỏi đáp chung">Hỏi đáp chung</option><option value="Báo giá - hợp tác dự án">Báo giá - hợp tác dự án</option><option value="Tuyển dụng">Tuyển dụng</option></select></label>
+    <label>Nhu cầu<select name="topic" id="ct-topic"><option value="Hỏi đáp chung">Hỏi đáp chung</option><option value="Báo giá - hợp tác dự án">Báo giá - hợp tác dự án</option><option value="Tuyển dụng">Tuyển dụng</option></select></label>
+    <label class="ct-position" hidden>Vị trí ứng tuyển<input name="position" maxlength="160" value=""></label>
     <label>Nội dung *<textarea name="message" rows="5" required></textarea></label>
+    <label class="ct-file">Đính kèm hồ sơ hoặc tài liệu (không bắt buộc)<input type="file" name="attachment" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.zip"><small>PDF, DOC, DOCX, XLS, XLSX, JPG, PNG hoặc ZIP, tối đa 5 MB.</small></label>
     <button class="btn" type="submit">Gửi thông tin <span class="arrow">→</span></button>
   </form>
 </div></section>

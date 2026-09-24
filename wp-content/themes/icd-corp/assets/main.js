@@ -59,6 +59,8 @@
     hs.forEach(function(h){tio.observe(h)});
     if(innerWidth<1100){var dt=toc.querySelector('details');if(dt)dt.removeAttribute('open')}
   }
+  var ct=document.getElementById('ct-topic'),cp=document.querySelector('.ct-position');
+  if(ct&&cp){var sync=function(){cp.hidden=ct.value!=='Tuyển dụng'};ct.addEventListener('change',sync);sync()}
   var back=document.querySelector('.backtop');
   if(back){addEventListener('scroll',function(){back.classList.toggle('show',scrollY>650)},{passive:true});back.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})})}
 })();

@@ -550,3 +550,8 @@ h1,h2,h3{line-height:1.2}
 .news-chips a:hover{border-color:var(--green);color:var(--green-700)}
 .news-chips a.on{background:var(--green);border-color:var(--green);color:#fff}.news-chips a.on em{color:rgba(255,255,255,.8)}
 @media(max-width:760px){.news-chips{flex-wrap:nowrap;overflow-x:auto;margin-right:-16px;padding-right:16px;scrollbar-width:none}.news-chips::-webkit-scrollbar{display:none}}
+
+.contact-form .ct-position[hidden]{display:none}
+.contact-form .ct-file input[type=file]{padding:11px 12px;background:var(--soft);cursor:pointer}
+.contact-form .ct-file input[type=file]::file-selector-button{margin-right:12px;padding:8px 14px;border:0;background:var(--green);color:#fff;font:600 13px var(--display);cursor:pointer}
+.contact-form .ct-file small{font:400 13px var(--body);color:var(--muted)}
