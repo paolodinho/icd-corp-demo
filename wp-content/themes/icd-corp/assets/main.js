@@ -107,3 +107,23 @@
     });
   });
 })();
+
+/* Thư viện ảnh: mục lục nhảy album + gấp gọn mỗi album còn 8 ảnh, bấm để xem thêm */
+(function(){
+  var g=document.querySelector('.gallery-content');if(!g)return;
+  var lang=(document.documentElement.lang||'vi').slice(0,2);
+  var L={vi:['Xem thêm %d ảnh','Thu gọn','Chuyển nhanh đến album'],en:['Show %d more photos','Show less','Jump to album'],zh:['查看更多 %d 张照片','收起','快速跳转相册']}[lang]||['Xem thêm %d ảnh','Thu gọn','Chuyển nhanh đến album'];
+  var KEEP=8,heads=[].slice.call(g.querySelectorAll('h2'));
+  if(heads.length>1){
+    var nav=document.createElement('nav');nav.className='album-nav';nav.setAttribute('aria-label',L[2]);
+    heads.forEach(function(h,i){h.id=h.id||'album-'+(i+1);var a=document.createElement('a');a.href='#'+h.id;a.textContent=h.textContent;nav.appendChild(a)});
+    g.insertBefore(nav,g.firstChild);
+  }
+  [].forEach.call(g.querySelectorAll('.album'),function(al){
+    var n=al.querySelectorAll('.album__item').length;if(n<=KEEP+2)return;
+    al.classList.add('album--fold');
+    var b=document.createElement('button');b.type='button';b.className='album-more';b.textContent=L[0].replace('%d',n-KEEP);
+    b.addEventListener('click',function(){var o=al.classList.toggle('album--open');b.textContent=o?L[1]:L[0].replace('%d',n-KEEP);b.setAttribute('aria-expanded',o)});
+    al.parentNode.insertBefore(b,al.nextSibling);
+  });
+})();
