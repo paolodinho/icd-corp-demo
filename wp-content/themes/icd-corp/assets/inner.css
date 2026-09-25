@@ -676,3 +676,5 @@ p,li,figcaption,blockquote{text-wrap:pretty}
 .abs-logo__mark strong{text-wrap:balance;max-width:14ch}
 .abs-logo__cap em{min-height:1.45em}
 .abs-logo__mark strong{max-width:18ch}
+
+@media(min-width:761px) and (max-width:1100px){.abs-flow__list{grid-template-columns:repeat(6,1fr)}.abs-flow__list li{grid-column:span 2}.abs-flow__list li:nth-child(4){grid-column:2/4}.abs-flow__list li:nth-child(5){grid-column:4/6}}
