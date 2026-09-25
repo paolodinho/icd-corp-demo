@@ -85,3 +85,25 @@
   if (document.readyState !== 'loading') glue(); else document.addEventListener('DOMContentLoaded', function () { glue(); });
   window.icdGlueOrphans = glue;
 })();
+
+/* Tiếng Trung: tách theo từ (Intl.Segmenter) rồi giữ nguyên từ trên một dòng, tránh ngắt giữa "绿色" hay "解决方案" */
+(function () {
+  if (document.documentElement.lang !== 'zh-CN' || typeof Intl === 'undefined' || !Intl.Segmenter) return;
+  var seg = new Intl.Segmenter('zh', { granularity: 'word' });
+  var SEL = 'h1,h2,h3,h4,.kicker,.btn,figcaption,li,p,dt,dd,.abs-chip,.abs-logo__cap b,.abs-logo__cap em,.abs-num__item span,.overview__item span,.abs-flow__card span,.abs-flow__card b';
+  document.querySelectorAll(SEL).forEach(function (el) {
+    if (el.closest('.article__body,.gallery-content,.toc')) return;
+    var dsp = getComputedStyle(el).display; if (dsp.indexOf('flex') > -1 || dsp.indexOf('grid') > -1) return;
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n, nodes = [];
+    while ((n = w.nextNode())) if (/[一-鿿]/.test(n.nodeValue) && n.parentNode.tagName !== 'SCRIPT' && !n.parentNode.classList.contains('zh-w')) nodes.push(n);
+    nodes.forEach(function (t) {
+      var text = t.nodeValue; if (text.length > 260) return;
+      var frag = document.createDocumentFragment();
+      for (var s of seg.segment(text)) {
+        if (s.isWordLike && /[一-鿿]/.test(s.segment) && s.segment.length > 1) { var sp = document.createElement('span'); sp.className = 'zh-w'; sp.textContent = s.segment; frag.appendChild(sp); }
+        else frag.appendChild(document.createTextNode(s.segment));
+      }
+      t.parentNode.replaceChild(frag, t);
+    });
+  });
+})();

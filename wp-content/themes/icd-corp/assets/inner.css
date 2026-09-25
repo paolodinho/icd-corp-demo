@@ -693,3 +693,10 @@ p,li,figcaption,blockquote{text-wrap:pretty}
 @media(max-width:560px){.abs-logos{gap:10px}.abs-logo{min-height:0}.abs-logo__mark{padding:22px 12px 10px;min-height:96px}.abs-logo__mark strong{font-size:16px;max-width:none}.abs-logo__cap{padding:10px 12px 14px}.abs-logo__go{margin-top:4px}.abs-chip{padding:12px 20px;font-size:15px}}
 .overview__item span,.abs-num__item span,.abs-num__item em{text-wrap:balance}
 .footer a,footer a{text-wrap:balance}
+
+.lang-switch a{color:inherit;font-weight:600;padding:2px 0}.lang-switch a.on{color:var(--green-700)}.lang-switch a:hover{color:var(--green-700)}
+.lang-switch:hover{background:transparent}
+html[lang="zh-CN"] body,html[lang="zh-CN"] h1,html[lang="zh-CN"] h2,html[lang="zh-CN"] h3,html[lang="zh-CN"] h4,html[lang="zh-CN"] .btn{font-family:var(--body),"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif}
+html[lang="zh-CN"] h1,html[lang="zh-CN"] h2,html[lang="zh-CN"] h3{letter-spacing:0;line-height:1.35}
+html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
+.zh-w{white-space:nowrap}
