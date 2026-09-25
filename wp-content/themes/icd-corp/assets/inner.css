@@ -740,3 +740,5 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
 /* Bảng trong bài: cuộn ngang trong khung, không làm trang tràn ngang trên mobile */
 @media(max-width:760px){.article__body table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;font-size:14.5px}.article__body th,.article__body td{padding:9px 10px;white-space:nowrap}.article__body td{white-space:normal;min-width:110px}}
 @media(max-width:640px){.job__img{aspect-ratio:16/9}.job{padding:22px 0;gap:14px}.job:hover{padding-left:0;padding-right:0}}
+/* Tiêu đề khối: còn chỗ thì dàn rộng, chữ co theo màn để giữ 1 dòng, không xuống dòng sớm */
+@media(min-width:900px){.abs-head,.solutions-head{max-width:min(1240px,100%)}.abs-head .section-title,.solutions-head .section-title{font-size:clamp(28px,3.35vw,46px);max-width:none;text-wrap:balance}}
