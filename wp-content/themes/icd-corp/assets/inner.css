@@ -737,3 +737,6 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
 .job__desc{margin:12px 0 0;font-size:15px;line-height:1.6;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 @media(max-width:640px){.job{flex-wrap:wrap}.job__img{width:100%}.job__go{display:none}}
 .drawer__search{display:flex;gap:8px;margin:0 0 14px}.drawer__search input{flex:1;padding:12px 14px;border:1px solid var(--line);font:400 16px var(--body)}.drawer__search button{padding:0 16px;background:var(--green);color:#fff;border:0;font:600 14px var(--display)}
+/* Bảng trong bài: cuộn ngang trong khung, không làm trang tràn ngang trên mobile */
+@media(max-width:760px){.article__body table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;font-size:14.5px}.article__body th,.article__body td{padding:9px 10px;white-space:nowrap}.article__body td{white-space:normal;min-width:110px}}
+@media(max-width:640px){.job__img{aspect-ratio:16/9}.job{padding:22px 0;gap:14px}.job:hover{padding-left:0;padding-right:0}}
