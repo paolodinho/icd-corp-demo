@@ -680,7 +680,7 @@ p,li,figcaption,blockquote{text-wrap:pretty}
 @media(min-width:761px) and (max-width:1100px){.abs-flow__list{grid-template-columns:repeat(6,1fr)}.abs-flow__list li{grid-column:span 2}.abs-flow__list li:nth-child(4){grid-column:2/4}.abs-flow__list li:nth-child(5){grid-column:4/6}}
 
 .abs-more{margin-top:56px;overflow:hidden}
-.abs-more__t{margin:0 0 20px;text-align:center;font:700 13px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--green-700)}
+.abs-more__t{margin:0 0 20px;text-align:center;font:600 16px/1.4 var(--body);letter-spacing:.01em;text-transform:none;color:var(--green-700)}
 .abs-more__row{overflow:hidden;padding:7px 0;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .abs-more__track{display:flex;gap:14px;width:max-content;animation:absMore 46s linear infinite}
 .abs-more__row--1 .abs-more__track{animation-direction:reverse;animation-duration:54s}
