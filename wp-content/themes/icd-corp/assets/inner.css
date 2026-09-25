@@ -672,3 +672,6 @@ p,li,figcaption,blockquote{text-wrap:pretty}
 .abs-head{max-width:1080px}
 .abs-head .section-title{max-width:none}
 .abs-head .section-copy{max-width:720px}
+
+.abs-logo__mark strong{text-wrap:balance;max-width:14ch}
+.abs-logo__cap em{min-height:1.45em}
