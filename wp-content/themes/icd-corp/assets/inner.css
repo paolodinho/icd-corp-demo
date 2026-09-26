@@ -742,3 +742,12 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
 @media(max-width:640px){.job__img{aspect-ratio:16/9}.job{padding:22px 0;gap:14px}.job:hover{padding-left:0;padding-right:0}}
 /* Tiêu đề khối: còn chỗ thì dàn rộng, chữ co theo màn để giữ 1 dòng, không xuống dòng sớm */
 @media(min-width:900px){.abs-head,.solutions-head{max-width:min(1240px,100%)}.abs-head .section-title,.solutions-head .section-title{font-size:clamp(28px,3.35vw,46px);max-width:none;text-wrap:balance}}
+/* === Sáng tông 26/09: xanh đậm -> xanh rừng sáng hơn, lớp phủ ảnh mỏng hơn === */
+:root{--green-900:#0D6A3D;--soft:#F6FAF8;--green-050:#EFF9F3}
+.hero-slide img{filter:saturate(1.04) contrast(1.02) brightness(1.1)}
+@media(min-width:1051px){.hero-slide::after{background:linear-gradient(90deg,rgba(6,52,30,.56) 0%,rgba(6,52,30,.34) 38%,rgba(6,52,30,.06) 70%,rgba(6,52,30,0) 88%),linear-gradient(0deg,rgba(0,0,0,.14),transparent 45%)}}
+@media(max-width:1050px){.hero-slide::after{background:linear-gradient(0deg,rgba(6,52,30,.84) 0,rgba(6,52,30,.66) 30%,rgba(6,52,30,.18) 52%,rgba(6,52,30,0) 68%)!important}}
+.page-hero--image::before{background:linear-gradient(90deg,rgba(6,52,30,.66) 0%,rgba(6,52,30,.4) 45%,rgba(6,52,30,.08) 100%)}
+.tile::before{background:linear-gradient(0deg,rgba(8,56,32,.86) 0%,rgba(8,56,32,.58) 34%,rgba(8,56,32,.04) 68%,rgba(8,56,32,.12) 100%)}
+.project-card::after{background:linear-gradient(0deg,rgba(8,56,32,.86) 0,rgba(8,56,32,.6) 30%,rgba(8,56,32,.14) 58%,transparent 75%)}
+.hero-content h1,.hero-content p,.hero-content .kicker{text-shadow:0 1px 14px rgba(4,40,22,.55),0 0 2px rgba(4,40,22,.35)}.page-hero--image h1,.page-hero--image p,.page-hero--image .kicker{text-shadow:0 1px 14px rgba(4,40,22,.5)}
