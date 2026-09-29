@@ -817,14 +817,14 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
 @media(max-width:400px){.svc-steps{grid-template-columns:1fr}}
 
 /* Hotline nổi: pill luôn hiện số, nhấp nháy nhẹ, mọi thiết bị */
-.hotline-float{position:fixed;left:20px;bottom:28px;z-index:61;display:flex;align-items:center;gap:12px;padding:8px 26px 8px 8px;border-radius:999px;background:linear-gradient(135deg,var(--green-700),var(--green-900));color:#fff;box-shadow:0 12px 30px rgba(8,40,25,.38);border:2px solid rgba(255,255,255,.85);white-space:nowrap;-webkit-tap-highlight-color:transparent;animation:hotring 2.4s infinite;transition:transform .25s}
+.hotline-float{position:fixed;left:20px;bottom:28px;z-index:61;display:flex;align-items:center;gap:12px;padding:8px 26px 8px 8px;border-radius:999px;background:linear-gradient(135deg,#FF8A1F,#F26B0F 55%,#D9560A);color:#fff;box-shadow:0 12px 30px rgba(217,86,10,.45);border:2px solid #fff;white-space:nowrap;-webkit-tap-highlight-color:transparent;animation:hotring 2.4s infinite;transition:transform .25s}
 .hotline-float:hover{transform:translateY(-3px) scale(1.03);color:#fff}
-.hotline-float i{flex:none;width:52px;height:52px;border-radius:50%;background:#F26B0F;display:grid;place-items:center;animation:hotshake 2.4s infinite}
-.hotline-float svg{width:26px;height:26px;fill:#fff}
+.hotline-float i{flex:none;width:52px;height:52px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(120,40,0,.25);display:grid;place-items:center;animation:hotshake 2.4s infinite}
+.hotline-float svg{width:26px;height:26px;fill:#F26B0F}
 .hotline-float span{display:grid;gap:3px;line-height:1}
-.hotline-float small{font:600 11px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.hotline-float small{font:700 11px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;opacity:.95}
 .hotline-float b{font:700 24px/1 var(--display);letter-spacing:.02em}
-@keyframes hotring{0%{box-shadow:0 12px 30px rgba(8,40,25,.38),0 0 0 0 rgba(242,107,15,.55)}70%{box-shadow:0 12px 30px rgba(8,40,25,.38),0 0 0 18px rgba(242,107,15,0)}100%{box-shadow:0 12px 30px rgba(8,40,25,.38),0 0 0 0 rgba(242,107,15,0)}}
+@keyframes hotring{0%{box-shadow:0 12px 30px rgba(217,86,10,.45),0 0 0 0 rgba(242,107,15,.6)}70%{box-shadow:0 12px 30px rgba(217,86,10,.45),0 0 0 18px rgba(242,107,15,0)}100%{box-shadow:0 12px 30px rgba(217,86,10,.45),0 0 0 0 rgba(242,107,15,0)}}
 @keyframes hotshake{0%,60%,100%{transform:rotate(0)}66%{transform:rotate(-14deg)}72%{transform:rotate(12deg)}78%{transform:rotate(-10deg)}84%{transform:rotate(8deg)}90%{transform:rotate(0)}}
 .quick-actions{bottom:40px}
 @media(max-width:760px){
