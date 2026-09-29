@@ -853,3 +853,11 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
   .hero--3d .hero-content__inner{transform:translate3d(calc(var(--mx)*16px),calc(var(--my)*9px),0) rotateY(calc(var(--mx)*3deg)) rotateX(calc(var(--my)*-2deg));will-change:transform}
   .hero--3d .hero-badge{transform:translate3d(calc(var(--mx)*30px),calc(var(--my)*18px),0)}
 }
+
+/* Header ở màn rất hẹp (<=360px): thu logo + khoảng cách, giữ nút hamburger đủ chỗ */
+@media(max-width:360px){
+  .header .container{gap:8px}
+  .header .logo{width:84px;flex:none}.header .logo img{height:40px}
+  .header .menu-toggle{flex:none}
+  .header .lang-switch{flex:none;padding-left:8px;padding-right:8px}
+}
