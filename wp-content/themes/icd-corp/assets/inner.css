@@ -861,3 +861,25 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
   .header .menu-toggle{flex:none}
   .header .lang-switch{flex:none;padding-left:8px;padding-right:8px}
 }
+
+/* Tablet (761-1050px): chân trang hiện đủ cột Liên hệ, lưới 3 thẻ chia đều 3 cột */
+@media(min-width:761px) and (max-width:1050px){
+  .footer-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-grid>.footer-brand{grid-column:1/-1}
+  .footer-grid>div:last-child{display:block}
+  .project-grid,.news-grid{grid-template-columns:repeat(3,1fr);gap:18px}
+  .project-grid .news-card__body,.news-grid .news-card__body{padding:20px 18px}
+}
+/* Mobile: cột Liên hệ hiện lại, chiếm trọn hàng cuối */
+@media(max-width:760px){
+  .footer-grid>div:last-child{display:block;grid-column:1/-1}
+}
+/* Chừa chỗ cho nút hotline nổi ở cuối trang */
+.footer{padding-bottom:104px}
+/* Chân trang: mục Sản phẩm không có xổ con, bỏ khoảng lệch; link chính sách không bị rớt chữ */
+.footer .nav-dd{display:block}.footer .nav-dd__list,.footer .nav-dd::after{display:none!important}
+.footer-bottom a{white-space:nowrap}
+@media(min-width:761px) and (max-width:1050px){
+  .news-grid .news-card__body h3,.project-grid .news-card__body h3{font-size:18px;line-height:1.35}
+  .news-grid .news-card__body p{font-size:14.5px;line-height:1.6}
+}
