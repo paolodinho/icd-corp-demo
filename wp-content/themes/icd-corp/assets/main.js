@@ -127,3 +127,15 @@
     al.parentNode.insertBefore(b,al.nextSibling);
   });
 })();
+/* Hero: chiều sâu 3D theo chuột (chỉ desktop, tắt khi giảm chuyển động) */
+(function(){
+  var h=document.querySelector('.hero');
+  if(!h||!window.matchMedia('(hover:hover) and (pointer:fine) and (min-width:1025px)').matches||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  h.classList.add('hero--3d');
+  var tx=0,ty=0,cx=0,cy=0,raf=0;
+  function loop(){cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;h.style.setProperty('--mx',cx.toFixed(3));h.style.setProperty('--my',cy.toFixed(3));
+    raf=(Math.abs(tx-cx)>.002||Math.abs(ty-cy)>.002)?requestAnimationFrame(loop):0}
+  function go(){if(!raf)raf=requestAnimationFrame(loop)}
+  h.addEventListener('pointermove',function(e){var r=h.getBoundingClientRect();tx=(e.clientX-r.left)/r.width*2-1;ty=(e.clientY-r.top)/r.height*2-1;go()});
+  h.addEventListener('pointerleave',function(){tx=0;ty=0;go()});
+})();
