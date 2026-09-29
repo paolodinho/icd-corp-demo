@@ -820,7 +820,8 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
 .hotline-float{position:fixed;left:20px;bottom:28px;z-index:61;display:flex;align-items:center;gap:12px;padding:8px 26px 8px 8px;border-radius:999px;background:linear-gradient(135deg,#FF8A1F,#F26B0F 55%,#D9560A);color:#fff;box-shadow:0 12px 30px rgba(217,86,10,.45);border:2px solid #fff;white-space:nowrap;-webkit-tap-highlight-color:transparent;animation:hotring 2.4s infinite;transition:transform .25s}
 .hotline-float:hover{transform:translateY(-3px) scale(1.03);color:#fff}
 .hotline-float i{flex:none;width:52px;height:52px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(120,40,0,.25);display:grid;place-items:center;animation:hotshake 2.4s infinite}
-.hotline-float svg{width:26px;height:26px;fill:#F26B0F}
+.hotline-float svg{width:26px;height:26px;fill:var(--green-700,#0F8A4F)}
+.hotline-float,.hotline-float:hover,.hotline-float span,.hotline-float small,.hotline-float b{color:#fff!important}
 .hotline-float span{display:grid;gap:3px;line-height:1}
 .hotline-float small{font:700 11px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;opacity:.95}
 .hotline-float b{font:700 24px/1 var(--display);letter-spacing:.02em}
