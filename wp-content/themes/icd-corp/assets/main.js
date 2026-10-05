@@ -139,3 +139,16 @@
   h.addEventListener('pointermove',function(e){var r=h.getBoundingClientRect();tx=(e.clientX-r.left)/r.width*2-1;ty=(e.clientY-r.top)/r.height*2-1;go()});
   h.addEventListener('pointerleave',function(){tx=0;ty=0;go()});
 })();
+
+/* Chia sẻ Zalo: điện thoại mở bảng chia sẻ hệ thống (có Zalo); máy tính sao chép liên kết rồi mở Zalo web. Không phụ thuộc SDK/OA của Zalo. */
+(function(){
+  var a=document.querySelector('[data-zalo-share]');if(!a)return;
+  function toast(t){var d=document.createElement('div');d.className='share-toast';d.textContent=t;document.body.appendChild(d);requestAnimationFrame(function(){d.classList.add('on')});setTimeout(function(){d.classList.remove('on');setTimeout(function(){d.remove()},300)},3600)}
+  a.addEventListener('click',function(e){
+    e.preventDefault();var u=a.dataset.url,t=a.dataset.title;
+    if(navigator.share&&matchMedia('(pointer:coarse)').matches){navigator.share({title:t,url:u}).catch(function(){});return}
+    function done(){toast(a.dataset.msg);window.open('https://chat.zalo.me/','_blank','noopener')}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(done,function(){prompt(a.dataset.msg,u)})}
+    else{var x=document.createElement('textarea');x.value=u;document.body.appendChild(x);x.select();try{document.execCommand('copy');done()}catch(err){prompt(a.dataset.msg,u)}x.remove()}
+  });
+})();

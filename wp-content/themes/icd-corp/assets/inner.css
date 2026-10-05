@@ -947,3 +947,7 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
   .abs-head .section-title,.solutions-head .section-title{font-size:clamp(30px,2.75vw,42px);white-space:nowrap;text-wrap:nowrap}
   .abs-head .section-copy,.solutions-head .section-copy{max-width:1040px}
 }
+
+/* Thông báo sao chép liên kết */
+.share-toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translate(-50%,16px);z-index:99999;background:#16211D;color:#fff;padding:14px 22px;border-radius:6px;font:500 15px/1.4 var(--display);box-shadow:0 12px 30px rgba(0,0,0,.28);opacity:0;transition:.3s;max-width:calc(100vw - 32px);text-align:center}
+.share-toast.on{opacity:1;transform:translate(-50%,0)}
