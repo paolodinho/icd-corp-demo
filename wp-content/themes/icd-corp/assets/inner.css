@@ -931,3 +931,12 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
   .abs-logo__mark img{max-height:64px;max-width:86%}
   .abs-logo__cap{display:flex;flex-direction:column;justify-content:flex-start}
 }
+
+/* Mobile 05/10: gom nút nổi về cột phải (không đè chữ): Gọi - Zalo - Lên đầu trang xếp dọc */
+@media(max-width:760px){
+  .hotline-float{left:auto;right:14px;bottom:calc(154px + env(safe-area-inset-bottom));width:54px;height:54px;padding:0;gap:0;justify-content:center;border-width:2px;box-shadow:0 8px 20px rgba(217,86,10,.4)}
+  .hotline-float span{display:none}
+  .hotline-float i{width:46px;height:46px;animation:hotshake 2.4s infinite}
+  .backtop{left:auto!important;right:19px!important;bottom:calc(220px + env(safe-area-inset-bottom))!important;width:44px!important;height:44px!important}
+  .backtop::before{width:13px;height:13px;border-width:3px}
+}
