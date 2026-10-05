@@ -32,7 +32,7 @@
 
 <link rel='stylesheet' id='icd-fonts-css' href='https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&#038;family=Be+Vietnam+Pro:wght@400;500;600&#038;display=swap' media='all' />
 <link rel='stylesheet' id='icd-style-css' href='../wp-content/themes/icd-corp/style.css' media='all' />
-<link rel='stylesheet' id='icd-inner-css' href='../wp-content/themes/icd-corp/assets/inner.css?v=1791185863' media='all' />
+<link rel='stylesheet' id='icd-inner-css' href='../wp-content/themes/icd-corp/assets/inner.css?v=1791187112' media='all' />
 </head>
 <body class="wp-singular page-template-default page page-id-8 wp-theme-icd-corp">
 <div class="topbar"><div class="container"><span>Green Solutions · Fresh Environment</span><div class="topbar__right"><form class="topbar__search" role="search" method="get" action="../index.html"><input type="search" name="s" placeholder="Tìm kiếm..." aria-label="Tìm kiếm"><button type="submit" aria-label="Tìm kiếm"><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg></button></form><a href="../tin-tuc/index.html">Tin tức</a><a href="index.html">Liên hệ</a></div></div></div>
@@ -58,15 +58,43 @@
     <p><b>Email</b><br><a href="mailto:khachhang.icd@gmail.com">khachhang.icd@gmail.com</a></p>
     <p><b>Kênh khác</b><br><a href="https://facebook.com/icdgreentech" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@ICD_Greentech" target="_blank" rel="noopener">YouTube</a> · <a href="https://zalo.me/0935482688" target="_blank" rel="noopener">Zalo</a></p>
   </div>
-  <form class="contact-form" id="form" method="post" enctype="multipart/form-data" action="https://paolodinho.github.io/icd-corp-demo/wp-admin/admin-post.php" onsubmit="alert(\'Bản xem thử: biểu mẫu chưa hoạt động trên bản tĩnh. / Preview only: the form is disabled.\');return false">
+    <form class="contact-form ct-tabs" id="form" method="post" enctype="multipart/form-data" action="https://paolodinho.github.io/icd-corp-demo/wp-admin/admin-post.php">
         <input type="hidden" name="action" value="icd_contact"><input type="hidden" id="_icd" name="_icd" value="8c7fed67ff" /><input type="hidden" name="_wp_http_referer" value="/lien-he/?topic=tuyen-dung&#038;vitri=%E6%8B%9B%E8%81%98%E7%BD%91%E7%BB%9C%E8%90%A5%E9%94%80%E4%B8%93%E5%91%98" />    <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-    <label>Họ và tên<input name="name" autocomplete="name"></label>
-    <label>Điện thoại *<input name="phone" type="tel" inputmode="tel" autocomplete="tel" required pattern="(\+?84|0)[0-9 .\-]{8,12}" maxlength="16" title="Nhập số điện thoại hợp lệ, ví dụ 0935 482 688"></label>
-    <label>Email<input type="email" name="email"></label>
-    <label>Nhu cầu<select name="topic" id="ct-topic"><option value="Hỏi đáp chung">Hỏi đáp chung</option><option value="Báo giá - hợp tác dự án">Báo giá - hợp tác dự án</option><option value="Tuyển dụng" selected>Tuyển dụng</option></select></label>
-    <label class="ct-position" hidden>Vị trí ứng tuyển<input name="position" maxlength="160" value="招聘网络营销专员"></label>
-    <label>Nội dung <small>(không bắt buộc)</small><textarea name="message" rows="4"></textarea></label>
-    <label class="ct-file">Đính kèm hồ sơ hoặc tài liệu (không bắt buộc)<input type="file" name="attachment" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.zip"><small>PDF, DOC, DOCX, XLS, XLSX, JPG, PNG hoặc ZIP, tối đa 5 MB.</small></label>
+    <input type="hidden" name="topic" id="ct-topic" value="Tuyển dụng">
+    <div class="ct-tablist" role="tablist" aria-label="Chọn nhu cầu liên hệ">
+      <a role="tab" id="tab-hoi-dap" href="index.html%3Ftopic=hoi-dap.html#form" data-tab="hoi-dap" data-topic="Hỏi đáp chung" aria-selected="false" aria-controls="panel-hoi-dap">Hỏi đáp chung</a><a role="tab" id="tab-bao-gia" href="index.html%3Ftopic=bao-gia.html#form" data-tab="bao-gia" data-topic="Báo giá - hợp tác dự án" aria-selected="false" aria-controls="panel-bao-gia">Báo giá - hợp tác dự án</a><a role="tab" id="tab-tuyen-dung" href="index.html%3Ftopic=tuyen-dung.html#form" data-tab="tuyen-dung" data-topic="Tuyển dụng" aria-selected="true" aria-controls="panel-tuyen-dung">Tuyển dụng</a>    </div>
+
+    <div class="ct-panel" role="tabpanel" id="panel-hoi-dap" data-panel="hoi-dap" hidden>
+      <p class="ct-hint">Gửi câu hỏi về sản phẩm, dịch vụ hoặc thông tin chung. ICD phản hồi trong giờ làm việc.</p>
+      <label>Họ và tên<input name="name" autocomplete="name"></label>
+      <label>Điện thoại *<input name="phone" type="tel" required pattern="(\+?84|0)[0-9 .\-]{8,12}" maxlength="16" inputmode="tel" autocomplete="tel" title="Nhập số điện thoại hợp lệ, ví dụ 0935 482 688"></label>
+      <label>Email<input type="email" name="email"></label>
+      <label>Nội dung câu hỏi<textarea name="message" rows="4"></textarea></label>
+    </div>
+
+    <div class="ct-panel" role="tabpanel" id="panel-bao-gia" data-panel="bao-gia" hidden>
+      <p class="ct-hint">Cho ICD biết nhu cầu để báo giá sát và nhanh. Có bản vẽ hoặc yêu cầu kỹ thuật thì đính kèm.</p>
+      <label>Họ và tên *<input name="name" autocomplete="name" required></label>
+      <label>Công ty / đơn vị<input name="company" autocomplete="organization" maxlength="160"></label>
+      <label>Điện thoại *<input name="phone" type="tel" required pattern="(\+?84|0)[0-9 .\-]{8,12}" maxlength="16" inputmode="tel" autocomplete="tel" title="Nhập số điện thoại hợp lệ, ví dụ 0935 482 688"></label>
+      <label>Email<input type="email" name="email"></label>
+      <label>Lĩnh vực quan tâm<select name="interest"><option>Môi trường đô thị</option><option>Làm sạch công nghiệp</option><option>Thu gom &amp; phân loại</option><option>Cabin &amp; hạ tầng</option><option>Khác</option></select></label>
+      <label>Sản phẩm / dịch vụ cần báo giá<input name="product" maxlength="200" placeholder="VD: xe quét bụi ngồi lái, cabin bảo vệ inox..."></label>
+      <label>Địa điểm triển khai và quy mô<input name="place" maxlength="200" placeholder="VD: nhà máy 5.000 m2 tại Bắc Ninh, cần 2 xe"></label>
+      <label>Yêu cầu thêm <small>(không bắt buộc)</small><textarea name="message" rows="4"></textarea></label>
+      <label class="ct-file">Đính kèm bản vẽ / yêu cầu kỹ thuật (không bắt buộc)<input type="file" name="attachment" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.zip"><small>PDF, DOC, DOCX, XLS, XLSX, JPG, PNG hoặc ZIP, tối đa 5 MB.</small></label>
+    </div>
+
+    <div class="ct-panel" role="tabpanel" id="panel-tuyen-dung" data-panel="tuyen-dung">
+      <p class="ct-hint">Điền thông tin và đính kèm hồ sơ (CV). Bộ phận nhân sự sẽ liên hệ khi hồ sơ phù hợp.</p>
+      <label>Họ và tên *<input name="name" autocomplete="name" required></label>
+      <label>Điện thoại *<input name="phone" type="tel" required pattern="(\+?84|0)[0-9 .\-]{8,12}" maxlength="16" inputmode="tel" autocomplete="tel" title="Nhập số điện thoại hợp lệ, ví dụ 0935 482 688"></label>
+      <label>Email *<input type="email" name="email" required></label>
+      <label>Vị trí ứng tuyển<select name="position"><option selected='selected'>招聘网络营销专员</option><option>Tuyển nhân viên kỹ thuật điện - cơ</option><option>Tuyển nhân viên kỹ thuật xe điện, máy vệ sinh công nghiệp</option><option>Tuyển nhân viên Marketing Online</option><option>Tuyển trưởng phòng và nhân viên kinh doanh dịch vụ vệ sinh công nghiệp</option><option value="Vị trí khác">Vị trí khác / gửi hồ sơ chung</option></select></label>
+      <label class="ct-file">Hồ sơ ứng tuyển (CV) *<input type="file" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.zip" required><small>PDF, DOC, DOCX, XLS, XLSX, JPG, PNG hoặc ZIP, tối đa 5 MB.</small></label>
+      <label>Giới thiệu ngắn về bạn <small>(không bắt buộc)</small><textarea name="message" rows="4"></textarea></label>
+    </div>
+
     <button class="btn" type="submit">Gửi thông tin <span class="arrow">→</span></button>
   </form>
 </div></section>
@@ -113,6 +141,6 @@
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/icd-corp/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<script data-wp-strategy="defer" defer id="icd-main-js" src="../wp-content/themes/icd-corp/assets/main.js?v=1791185863"></script>
+<script data-wp-strategy="defer" defer id="icd-main-js" src="../wp-content/themes/icd-corp/assets/main.js?v=1791187112"></script>
 <script src="https://paolodinho.github.io/icd-corp-demo/demo-search.js"></script></body>
 </html>

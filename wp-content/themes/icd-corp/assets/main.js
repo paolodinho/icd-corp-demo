@@ -140,15 +140,31 @@
   h.addEventListener('pointerleave',function(){tx=0;ty=0;go()});
 })();
 
-/* Chia sẻ Zalo: điện thoại mở bảng chia sẻ hệ thống (có Zalo); máy tính sao chép liên kết rồi mở Zalo web. Không phụ thuộc SDK/OA của Zalo. */
+/* Chia sẻ Zalo: điện thoại mở thẳng ứng dụng Zalo (Android intent / iOS zaloshareext, giống SDK Zalo); máy tính dùng khung chia sẻ của SDK Zalo; nếu SDK không tải được thì sao chép liên kết. */
 (function(){
   var a=document.querySelector('[data-zalo-share]');if(!a)return;
   function toast(t){var d=document.createElement('div');d.className='share-toast';d.textContent=t;document.body.appendChild(d);requestAnimationFrame(function(){d.classList.add('on')});setTimeout(function(){d.classList.remove('on');setTimeout(function(){d.remove()},300)},3600)}
   a.addEventListener('click',function(e){
-    e.preventDefault();var u=a.dataset.url,t=a.dataset.title;
-    if(navigator.share&&matchMedia('(pointer:coarse)').matches){navigator.share({title:t,url:u}).catch(function(){});return}
-    function done(){toast(a.dataset.msg);window.open('https://chat.zalo.me/','_blank','noopener')}
-    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(done,function(){prompt(a.dataset.msg,u)})}
-    else{var x=document.createElement('textarea');x.value=u;document.body.appendChild(x);x.select();try{document.execCommand('copy');done()}catch(err){prompt(a.dataset.msg,u)}x.remove()}
+    e.preventDefault();var u=a.dataset.url,enc=encodeURIComponent(u),ua=navigator.userAgent;
+    if(/Android/i.test(ua)){location.href='intent://zaloapp.com/#Intent;action=android.intent.action.SEND;type=text/plain;S.android.intent.extra.SUBJECT=;S.android.intent.extra.TEXT='+enc+';B.hidePostFeed=false;B.backToSource=true;end';return}
+    if(/iPhone|iPad|iPod/i.test(ua)){location.href='zaloshareext://shareext?url='+enc+'&type=8&version=1';return}
+    setTimeout(function(){
+      if(document.querySelector('iframe[src*="button-share.zalo.me"]'))return; /* SDK đã mở khung chia sẻ */
+      function done(){toast(a.dataset.msg);window.open('https://chat.zalo.me/','_blank','noopener')}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(done,function(){prompt(a.dataset.msg,u)})}
+      else{var x=document.createElement('textarea');x.value=u;document.body.appendChild(x);x.select();try{document.execCommand('copy');done()}catch(err){prompt(a.dataset.msg,u)}x.remove()}
+    },700);
   });
+})();
+
+/* Form liên hệ dạng tab: mỗi nhu cầu một bộ trường riêng; ô của tab đang ẩn bị vô hiệu để không gửi đi */
+(function(){
+  var f=document.querySelector('.ct-tabs');if(!f)return;
+  var tabs=[].slice.call(f.querySelectorAll('[data-tab]')),panels=[].slice.call(f.querySelectorAll('[data-panel]')),topic=f.querySelector('#ct-topic');
+  function show(k){
+    tabs.forEach(function(t){t.setAttribute('aria-selected',String(t.dataset.tab===k));if(t.dataset.tab===k)topic.value=t.dataset.topic});
+    panels.forEach(function(p){var on=p.dataset.panel===k;p.hidden=!on;[].forEach.call(p.querySelectorAll('input,select,textarea'),function(i){i.disabled=!on})});
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.dataset.tab);history.replaceState(null,'',t.getAttribute('href'))})});
+  var cur=tabs.filter(function(t){return t.getAttribute('aria-selected')==='true'})[0];show(cur?cur.dataset.tab:'hoi-dap');
 })();
