@@ -166,5 +166,5 @@
     panels.forEach(function(p){var on=p.dataset.panel===k;p.hidden=!on;[].forEach.call(p.querySelectorAll('input,select,textarea'),function(i){i.disabled=!on})});
   }
   tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.dataset.tab);history.replaceState(null,'',t.getAttribute('href'))})});
-  var cur=tabs.filter(function(t){return t.getAttribute('aria-selected')==='true'})[0];show(cur?cur.dataset.tab:'hoi-dap');
+  var q=(new URLSearchParams(location.search)).get('topic'),cur=tabs.filter(function(t){return q?t.dataset.tab===q:t.getAttribute('aria-selected')==='true'})[0];show(cur?cur.dataset.tab:'hoi-dap');
 })();
