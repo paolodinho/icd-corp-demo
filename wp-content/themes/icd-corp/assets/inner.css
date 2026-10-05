@@ -940,3 +940,10 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
   .backtop{left:auto!important;right:19px!important;bottom:calc(220px + env(safe-area-inset-bottom))!important;width:44px!important;height:44px!important}
   .backtop::before{width:13px;height:13px;border-width:3px}
 }
+
+/* 05/10: tiêu đề + mô tả khối Về ICD dàn rộng, tiêu đề 1 dòng trên desktop (khách không thích co cụm xuống dòng) */
+@media(min-width:1100px){
+  .abs-head,.solutions-head{max-width:min(1300px,100%)}
+  .abs-head .section-title,.solutions-head .section-title{font-size:clamp(30px,2.75vw,42px);white-space:nowrap;text-wrap:nowrap}
+  .abs-head .section-copy,.solutions-head .section-copy{max-width:1040px}
+}
