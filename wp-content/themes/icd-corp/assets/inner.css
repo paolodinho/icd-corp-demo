@@ -960,3 +960,17 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
 .ct-panel[hidden]{display:none}.ct-panel{display:grid;gap:18px}
 .ct-hint{margin:0;padding:12px 16px;background:var(--green-050,#F1F8F4);border-left:3px solid var(--green);color:var(--text);font-size:15px;line-height:1.55}
 @media(max-width:640px){.ct-tablist{flex-direction:row;gap:4px;border-bottom:2px solid var(--line);margin-bottom:18px}.ct-tablist a{flex:1 1 0;min-width:0;display:flex;align-items:center;justify-content:center;border:0;border-bottom:3px solid transparent;margin:0 0 -2px;text-align:center;padding:10px 4px;font-size:13px;line-height:1.25;text-wrap:balance}.ct-tablist a[aria-selected="true"]{border-bottom-color:var(--orange);background:#FFF6EC;color:var(--green-900)}}
+
+/* === Góp ý 12/10 === */
+/* Menu thả: mục con không kế thừa chiều cao 78px của menu chính */
+.nav-dd__list a{height:auto!important;min-height:0!important;line-height:1.3!important;align-items:center}
+.nav-dd__list a:not(.nav-dd__main){padding:9px 14px;font-size:15px}
+/* Lưới khách hàng: thẻ chữ vẫn giữ chỗ dòng tên để các hàng mô tả thẳng nhau */
+.abs-logo--txt .abs-logo__cap b{display:block!important;visibility:hidden}
+/* Thẻ tin tức: tiêu đề tối đa 3 dòng, mô tả tối đa 3 dòng, nút Đọc tiếp cùng hàng */
+.news-card{display:flex;flex-direction:column}
+.news-card__body{display:flex;flex-direction:column;flex:1}
+.news-card__body h3{line-height:1.3;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;min-height:3.9em}
+.news-card__body p{line-height:1.6;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;min-height:4.8em}
+.news-card__body .text-link{margin-top:auto}
+@media(max-width:640px){.news-card__body h3,.news-card__body p{min-height:0}}
