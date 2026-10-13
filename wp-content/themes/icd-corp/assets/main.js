@@ -73,7 +73,7 @@
   function glue(root) {
     (root || document).querySelectorAll(SEL).forEach(function (el) {
       if (el.dataset.orphanDone) return;
-      var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), last = null, n;
+      var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, { acceptNode: function (t) { return t.parentNode.closest('script,style,noscript,template') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; } }), last = null, n;
       while ((n = w.nextNode())) if (n.nodeValue.trim()) last = n;
       if (!last) return;
       var t = last.nodeValue.replace(/\s+$/, ''), m = t.match(/^([\s\S]*\S)\s+(\S+)$/);
