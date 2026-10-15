@@ -157,7 +157,7 @@ h1,h2,h3{line-height:1.2}
   .hero p{display:none}
   .hero-content{padding-bottom:62px}
   .hero-slide::after{background:linear-gradient(0deg,rgba(4,36,20,.95) 0,rgba(4,36,20,.86) 30%,rgba(4,36,20,.3) 52%,rgba(4,36,20,0) 68%)}
-  .hero-actions .btn{padding:0 8px;font-size:12.5px;letter-spacing:.01em;white-space:normal;text-align:center;line-height:1.25;min-width:0}
+  .hero-actions .btn{padding:0 8px;font-size:12.5px;letter-spacing:.01em;white-space:nowrap;text-align:center;line-height:1.25;min-width:0}
   .hero-actions .btn .arrow{display:none}
 }
 
@@ -357,7 +357,7 @@ h1,h2,h3{line-height:1.2}
 /* ===== Thẻ dự án: ảnh sạch phía trên, chữ trên nền trắng phía dưới (đỡ mỏi mắt) ===== */
 .project-grid .project-card,.project-grid .project-card:first-child,.project-grid--list .project-card,.project-grid--list .project-card:first-child{display:flex!important;flex-direction:column;height:auto!important;min-height:0!important;grid-column:auto!important;background:#fff!important;border:1px solid var(--line);color:var(--ink);overflow:hidden;transition:box-shadow .3s,transform .3s var(--ease)}
 .project-card::after,.project-card::before{display:none!important}
-.project-card__media{position:relative;aspect-ratio:3/2;overflow:hidden;background:var(--green-050,#F1F8F4);flex:none}
+.project-card__media{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--green-050,#F1F8F4);flex:none}
 .project-card__media img{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover!important;transition:transform .8s var(--ease)}
 .project-card:hover .project-card__media img{transform:scale(1.05)}
 .project-card:hover{box-shadow:var(--shadow-md,0 12px 30px rgba(20,30,25,.12));transform:translateY(-3px)}
@@ -373,7 +373,7 @@ h1,h2,h3{line-height:1.2}
 .article__meta{display:flex;gap:18px;margin:0 0 22px;font:500 13.5px/1 var(--display);letter-spacing:.04em;color:var(--muted)}
 .article__meta span+span::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--orange);margin:0 18px 2px 0;vertical-align:middle}
 .article__cover{margin:0 0 clamp(28px,4vw,48px)}
-.article__cover img{width:100%;height:auto;max-height:none;aspect-ratio:16/9;object-fit:cover;display:block}
+.article__cover img{width:100%;height:auto;max-height:none;aspect-ratio:16/10;object-fit:cover;display:block}
 .article__body{font-size:18px;line-height:1.85;color:#26302B;hyphens:manual;text-wrap:pretty}
 .article__body>p:first-child{font-size:20px;line-height:1.75;color:var(--ink);font-weight:500}
 .article__body p{margin:0 0 1.35em;max-width:70ch}
@@ -396,7 +396,7 @@ h1,h2,h3{line-height:1.2}
 .article__foot{margin-top:56px}
 .related{background:var(--green-050,#F1F8F4);padding:clamp(48px,6vw,88px) 0}
 .related h2{font:600 clamp(24px,2.4vw,32px)/1.2 var(--display);margin:0 0 28px;color:var(--green-900)}
-@media(max-width:760px){.article__body{font-size:17px;line-height:1.8}.article__body>p:first-child{font-size:18px}.article__cover img{aspect-ratio:4/3}.article-figure img{box-shadow:none}}
+@media(max-width:760px){.article__body{font-size:17px;line-height:1.8}.article__body>p:first-child{font-size:18px}.article__cover img{aspect-ratio:16/10}.article-figure img{box-shadow:none}}
 
 /* ===== Tuyển dụng ===== */
 .job-list{display:grid;gap:0;border-top:1px solid var(--line)}
@@ -714,8 +714,8 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
 @media(max-width:760px){.project-grid{grid-template-columns:1fr}}
 .rel-products__grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
 .rel-products__item{display:flex!important;flex-direction:column;padding:0!important;gap:0!important}
-.rel-products__media{display:block;aspect-ratio:4/3;overflow:hidden;background:var(--green-050)}
-.rel-products__media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.rel-products__media{display:block;aspect-ratio:16/10;overflow:hidden;background:#fff}
+.rel-products__media img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s}
 .rel-products__item:hover .rel-products__media img{transform:scale(1.05)}
 .rel-products__ph{display:grid;place-items:center;height:100%;font:700 28px var(--display);letter-spacing:.2em;color:var(--green-700)}
 .rel-products__body{display:flex;flex-direction:column;gap:8px;padding:14px 16px 16px;flex:1}
@@ -916,8 +916,8 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
 .drawer .nav-dd__sep{margin-left:0}
 /* Sản phẩm tiêu biểu có ảnh */
 .svc-prods li a.has-img{display:flex!important;flex-direction:column;padding:0!important;overflow:hidden;height:100%}
-.svc-prods__img{display:block;aspect-ratio:4/3;overflow:hidden;background:var(--green-050,#F1F8F4)}
-.svc-prods__img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.svc-prods__img{display:block;aspect-ratio:16/10;overflow:hidden;background:#fff}
+.svc-prods__img img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .4s}
 .svc-prods a.has-img:hover .svc-prods__img img{transform:scale(1.05)}
 .svc-prods__t{display:block;padding:12px 14px 14px;font-size:15px;line-height:1.4}
 .svc-prods a.has-img::after{display:none}
