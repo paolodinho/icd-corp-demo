@@ -974,3 +974,16 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
 .news-card__body p{line-height:1.6;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;min-height:4.8em}
 .news-card__body .text-link{margin-top:auto}
 @media(max-width:640px){.news-card__body h3,.news-card__body p{min-height:0}}
+
+/* === Góp ý 23/10: ảnh không cắt, không nhoè, cao bằng nhau === */
+.album:not(.ab-mosaic){display:flex;flex-wrap:wrap;gap:10px}
+.album:not(.ab-mosaic) .album__item,.album:not(.ab-mosaic) .album__item:nth-child(7n+1){flex:var(--r,1.333) 1 calc(var(--r,1.333) * 230px);aspect-ratio:var(--r,1.333);grid-column:auto;grid-row:auto}
+.album--many::after{content:"";flex:1e4 1 0}
+.album:not(.ab-mosaic) .album__item:hover img{transform:scale(1.03)}
+@media(max-width:640px){.album:not(.ab-mosaic){gap:6px}.album:not(.ab-mosaic) .album__item,.album:not(.ab-mosaic) .album__item:nth-child(7n+1){flex-basis:calc(var(--r,1.333) * 130px);aspect-ratio:var(--r,1.333)}}
+
+/* Nút Messenger nổi */
+.qa-mes{background:#0A7CFF}.qa-mes:hover{background:#0866D6}
+@media(max-width:760px){.fab__mes{background:#0A7CFF}}
+/* Ảnh lĩnh vực dạng dọc trong thẻ ngang: giữ đầu người lái và đầu xe */
+.solution-card__media img{object-position:50% 22%}
