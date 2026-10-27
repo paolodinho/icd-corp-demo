@@ -990,3 +990,6 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
 /* Mobile: nút gọi xếp trên cụm Zalo + Messenger, không che nhau */
 @media(max-width:760px){.fab:has(.fab__mes)~.hotline-float,body:has(.fab__mes) .hotline-float{bottom:calc(220px + env(safe-area-inset-bottom))}}
 @media(max-width:760px){body:has(.fab__mes) .backtop{bottom:calc(286px + env(safe-area-inset-bottom))!important}}
+/* 27/10: thẻ tin/dự án theo tỉ lệ 4:3 của ảnh web cũ - đội vận hành đăng ảnh như cũ, không cần sửa ảnh, không viền nền */
+.news-card__media,.project-card__media{position:relative!important;aspect-ratio:4/3!important;height:auto!important;overflow:hidden;background:var(--green-050,#F1F8F4)}
+.news-card__media img,.project-card__media img{position:absolute!important;inset:0;width:100%!important;height:100%!important;object-fit:cover!important;object-position:50% 30%!important}
