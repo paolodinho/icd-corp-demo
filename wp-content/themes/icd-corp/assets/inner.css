@@ -993,3 +993,18 @@ html[lang="zh-CN"] p,html[lang="zh-CN"] li{line-height:1.85;text-align:left}
 /* 27/10: thẻ tin/dự án theo tỉ lệ 4:3 của ảnh web cũ - đội vận hành đăng ảnh như cũ, không cần sửa ảnh, không viền nền */
 .news-card__media,.project-card__media{position:relative!important;aspect-ratio:4/3!important;height:auto!important;overflow:hidden;background:var(--green-050,#F1F8F4)}
 .news-card__media img,.project-card__media img{position:absolute!important;inset:0;width:100%!important;height:100%!important;object-fit:cover!important;object-position:50% 30%!important}
+
+/* 29/10: chữ trên nền xanh logo #00B050 dùng màu đậm cho đủ tương phản (rule design-system mục 11) */
+.btn:not(.btn--line){color:var(--ink)}.btn:not(.btn--line):hover{color:#fff}
+.contact-band{color:var(--ink)}.contact-band h2,.contact-band p{color:var(--ink)}
+
+/* 29/10 Hieu: giao dien nhin tong quan hon - thu nho toan trang tren man hinh may tinh */
+@media (min-width:1280px){html{zoom:.9}}
+
+/* 29/10 Hieu: menu di dong tren iPhone keo len keo xuong duoc khi danh sach dai hon man hinh */
+.drawer{overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y}
+body.menu-open .fab,body.menu-open .hotline-float{opacity:0;visibility:hidden;pointer-events:none}
+.drawer{grid-template-columns:minmax(0,1fr);overflow-x:hidden}
+.drawer>*{min-width:0;max-width:100%}
+.drawer .nav-dd__list a{white-space:normal}
+.drawer__search input{min-width:0}.drawer__search button{flex:none}
