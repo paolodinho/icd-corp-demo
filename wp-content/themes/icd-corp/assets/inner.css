@@ -1008,3 +1008,90 @@ body.menu-open .fab,body.menu-open .hotline-float{opacity:0;visibility:hidden;po
 .drawer>*{min-width:0;max-width:100%}
 .drawer .nav-dd__list a{white-space:normal}
 .drawer__search input{min-width:0}.drawer__search button{flex:none}
+
+/* 03/11 chân trang: địa chỉ ở cột thương hiệu, nhóm Dịch vụ khác */
+.footer-addr{list-style:none;margin:16px 0 0;padding:0;max-width:44ch}
+.footer-addr li{color:var(--muted);font-size:14px;line-height:1.6;margin:0 0 10px}
+.footer-addr b{display:block;color:var(--green-700);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-bottom:2px}
+.footer h3.footer-sub{margin-top:22px}
+/* 03/11 slide 1 ảnh nhà máy nhiều chi tiết: lớp phủ trái đậm hơn để chữ đọc rõ */
+@media(min-width:761px){.hero-slide:first-child::after{background:linear-gradient(90deg,rgba(6,52,30,.84) 0%,rgba(6,52,30,.68) 34%,rgba(6,52,30,.18) 60%,rgba(6,52,30,0) 78%),linear-gradient(0deg,rgba(0,0,0,.2),transparent 45%)!important}}
+/* 03/11 khối Lĩnh vực trang chủ: lưới 4 thẻ đều, cùng kiểu thẻ Dịch vụ khác (khách không thích kiểu ảnh dọc chữ đè, số viền) */
+.catalog--lv{background:#fff;padding-bottom:40px}
+.catalog--lv + .catalog{padding-top:48px}
+.catalog-grid.catalog-grid--4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1024px){.catalog-grid.catalog-grid--4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.catalog-grid.catalog-grid--4{grid-template-columns:1fr}}
+/* 03/11 nhịp màu trang chủ (Hiếu: trang nhạt): Lĩnh vực trên nền xanh thương hiệu, số thứ tự dạng nhãn, thanh link cam */
+.catalog-item__n{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;min-width:36px;height:26px;padding:0 8px;border-radius:4px;background:var(--green-050);color:var(--green-700);font:700 13px/1 var(--display);letter-spacing:.04em}
+.catalog--lv{position:relative;background:radial-gradient(ellipse at 85% 0%,rgba(0,176,80,.35),transparent 55%),linear-gradient(160deg,#0A5A33 0%,#08492A 70%);padding:clamp(72px,7vw,104px) 0;color:#fff}
+.catalog--lv::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--green) 0 72%,var(--orange) 72%)}
+.catalog--lv .kicker{color:#FFB25C}
+.catalog--lv .section-title{color:#fff}
+.catalog--lv .section-copy{color:rgba(255,255,255,.84)}
+.catalog--lv .catalog-item{border:0;box-shadow:0 18px 40px rgba(0,0,0,.22)}
+.catalog--lv .catalog-item:hover{box-shadow:0 24px 48px rgba(0,0,0,.3)}
+.catalog--lv .catalog-item__n{background:var(--orange);color:var(--ink)}
+.catalog--lv .catalog-item h3{font-size:20px}
+.catalog--lv .catalog-item__go{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:6px -22px -22px;padding:12px 22px;background:var(--orange-100);color:var(--ink);font:700 15px/1.2 var(--display);border-top:3px solid var(--orange);transition:background .2s}
+.catalog--lv .catalog-item__go small{display:block;font:500 11.5px/1.3 var(--body);color:#8A4300;letter-spacing:.02em;margin-bottom:2px}
+.catalog--lv .catalog-item__go i{font-style:normal;font-size:18px;color:#A94400}
+.catalog--lv .catalog-item:hover .catalog-item__go{background:var(--orange)}
+.catalog--lv + .catalog{background:#fff;padding-top:clamp(64px,6vw,88px)}
+.catalog--lv + .catalog .catalog-item{border-top:3px solid var(--green)}
+@media(max-width:820px){.catalog--lv .catalog-item__go{margin:6px -14px -16px;padding:12px 14px}}
+.catalog--lv .catalog-item{color:var(--text)}
+.catalog--lv .catalog-item h3{color:var(--ink)}
+.catalog--lv .catalog-item p{color:var(--muted)}
+/* 03/11 trang chủ 6 nhóm + 3 thẻ khác (khách Diem): lưới 3 cột đều */
+.catalog-grid--3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.catalog-grid--3 .catalog-item{height:100%}
+.catalog-grid--3 .catalog-item__img img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+@media (max-width:1024px){.catalog-grid--3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.catalog-grid--3{grid-template-columns:1fr}}
+
+/* 06/11: khối 6 lĩnh vực trang chủ dạng trình diễn (.lvx) - điểm nhấn trang, rộng và gọn */
+.lvx{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(28px,3.4vw,56px);align-items:stretch;margin-top:clamp(36px,4vw,56px)}
+.lvx__nav{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.18)}
+.lvx__nav li{flex:1;display:flex;border-bottom:1px solid rgba(255,255,255,.18)}
+.lvx__nav button{position:relative;flex:1;display:flex;align-items:center;gap:18px;width:100%;padding:22px 8px 22px 0;background:none;border:0;color:rgba(255,255,255,.78);font:600 clamp(17px,1.35vw,20px)/1.35 var(--display);text-align:left;cursor:pointer;transition:color .25s,padding-left .35s cubic-bezier(.4,0,.2,1)}
+.lvx__nav button:hover{color:#fff}
+.lvx__nav button[aria-selected=true]{color:#fff;padding-left:14px}
+.lvx__nav button:focus-visible{outline:2px solid #FFB25C;outline-offset:2px}
+.lvx__n{flex:none;display:grid;place-items:center;width:40px;height:30px;border-radius:4px;background:rgba(255,255,255,.12);color:#fff;font:700 13px/1 var(--display);letter-spacing:.04em;transition:background .25s,color .25s}
+.lvx__nav button[aria-selected=true] .lvx__n{background:var(--orange);color:var(--ink)}
+.lvx__name{flex:1;text-wrap:balance}
+.lvx__nav button::after{content:"→";flex:none;opacity:0;transform:translateX(-8px);transition:opacity .25s,transform .25s;color:#FFB25C}
+.lvx__nav button[aria-selected=true]::after{opacity:1;transform:none}
+.lvx__bar{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left}
+.lvx__nav button[aria-selected=true] .lvx__bar{animation:lvxBar var(--lvx-t,6s) linear forwards}
+.lvx.is-paused .lvx__nav button[aria-selected=true] .lvx__bar{animation-play-state:paused}
+.lvx.is-static .lvx__bar{display:none}
+@keyframes lvxBar{to{transform:scaleX(1)}}
+.lvx__stage{display:grid;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.28)}
+.lvx__p{grid-area:1/1;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .55s cubic-bezier(.4,0,.2,1),visibility 0s .55s}
+.lvx__p.is-on{opacity:1;visibility:visible;transition:opacity .55s cubic-bezier(.4,0,.2,1)}
+.lvx__img{display:block;aspect-ratio:16/9;overflow:hidden;background:#EEF3F0}
+.lvx__img img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;transform:scale(1.06);transition:transform 6.5s cubic-bezier(.2,0,.2,1)}
+.lvx__p.is-on .lvx__img img{transform:scale(1)}
+.lvx__body{display:grid;grid-template-columns:1fr auto;grid-template-areas:"k k" "h go" "p go";column-gap:32px;row-gap:8px;align-items:center;padding:26px clamp(24px,2.6vw,36px) 30px;color:var(--text)}
+.lvx__k{grid-area:k;font:600 12px/1.3 var(--display);letter-spacing:.08em;text-transform:uppercase;color:#A94400}
+.lvx__body h3{grid-area:h;margin:0;font:700 clamp(22px,2vw,28px)/1.25 var(--display);color:var(--ink);text-wrap:balance}
+.lvx__body p{grid-area:p;margin:0;font-size:16px;line-height:1.65;color:var(--muted);max-width:60ch;align-self:start}
+.lvx__go{grid-area:go;white-space:nowrap}
+.lvx__go i{font-style:normal}
+.catalog--lv .lvx__go{background:var(--orange);color:var(--ink);border-color:var(--orange)}
+.catalog--lv .lvx__go:hover{background:#E57600;border-color:#E57600}
+@media(max-width:1100px){.lvx{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}.lvx__body{grid-template-columns:1fr;grid-template-areas:"k" "h" "p" "go"}.lvx__go{justify-self:start;margin-top:8px}}
+@media(max-width:860px){
+  .lvx{grid-template-columns:1fr;gap:0}
+  .lvx__nav{display:none}
+  .lvx__stage{display:flex;gap:14px;background:none;box-shadow:none;border-radius:0;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--gutter));padding:4px var(--gutter) 22px;scroll-padding:0 var(--gutter);scrollbar-width:none}
+  .lvx__stage::-webkit-scrollbar{display:none}
+  .lvx__p,.lvx__p.is-on{flex:0 0 84%;scroll-snap-align:start;grid-area:auto;opacity:1;visibility:visible;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.22)}
+  .lvx__body p{font-size:15px}
+  .lvx__go{white-space:normal;font-size:13px}
+  .lvx__img img,.lvx__p.is-on .lvx__img img{transform:none;transition:none}
+  .lvx__body{padding:20px 20px 24px}
+}
+@media(prefers-reduced-motion:reduce){.lvx__img img,.lvx__p.is-on .lvx__img img{transform:none;transition:none}.lvx__p{transition:none}.lvx__bar{display:none}}
