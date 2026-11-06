@@ -168,3 +168,23 @@
   tabs.forEach(function(t){t.addEventListener('click',function(e){e.preventDefault();show(t.dataset.tab);history.replaceState(null,'',t.getAttribute('href'))})});
   var q=(new URLSearchParams(location.search)).get('topic'),cur=tabs.filter(function(t){return q?t.dataset.tab===q:t.getAttribute('aria-selected')==='true'})[0];show(cur?cur.dataset.tab:'hoi-dap');
 })();
+
+/* 06/11: khối 6 lĩnh vực trang chủ: rê chuột/bấm vào nhóm nào hiện ảnh nhóm đó, tự chuyển khi thanh tiến trình chạy hết (6 giây), dừng khi rê chuột/focus/khuất màn hình; tắt khi giảm chuyển động hoặc màn hẹp */
+(function(){
+  var w=document.querySelector('[data-lvx]');if(!w)return;
+  var tabs=[].slice.call(w.querySelectorAll('[role=tab]')),ps=[].slice.call(w.querySelectorAll('[role=tabpanel]')),cur=0,hov=false,vis=false;
+  var still=window.matchMedia('(prefers-reduced-motion: reduce)'),narrow=window.matchMedia('(max-width: 860px)');
+  function sync(){w.classList.toggle('is-static',still.matches||narrow.matches);w.classList.toggle('is-paused',hov||!vis)}
+  function show(i,focus){cur=(i+tabs.length)%tabs.length;
+    tabs.forEach(function(t,j){var on=j===cur;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;var b=t.querySelector('.lvx__bar');b.style.animation='none';b.offsetWidth;b.style.animation=''});
+    ps.forEach(function(p,j){p.classList.toggle('is-on',j===cur)});if(focus)tabs[cur].focus()}
+  tabs.forEach(function(t,i){
+    t.querySelector('.lvx__bar').addEventListener('animationend',function(){if(i===cur&&!w.classList.contains('is-static'))show(cur+1)});
+    t.addEventListener('click',function(){show(i)});
+    t.addEventListener('mouseenter',function(){if(i!==cur&&window.matchMedia('(hover: hover)').matches)show(i)});
+    t.addEventListener('keydown',function(e){var k=e.key;if(k==='ArrowDown'||k==='ArrowRight'){e.preventDefault();show(cur+1,true)}else if(k==='ArrowUp'||k==='ArrowLeft'){e.preventDefault();show(cur-1,true)}})});
+  w.addEventListener('mouseenter',function(){hov=true;sync()});w.addEventListener('mouseleave',function(){hov=false;sync()});
+  w.addEventListener('focusin',function(){hov=true;sync()});w.addEventListener('focusout',function(){hov=false;sync()});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting;sync()},{threshold:.25}).observe(w);else vis=true;
+  [still,narrow].forEach(function(m){m.addEventListener&&m.addEventListener('change',sync)});sync();
+})();
