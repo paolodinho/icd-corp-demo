@@ -1272,3 +1272,9 @@ body.menu-open .fab,body.menu-open .hotline-float{opacity:0;visibility:hidden;po
 #danh-muc .oth-strip__t em,#danh-muc .oth-strip i{display:none}
 #danh-muc .oth-strip__t{padding:12px 14px}
 }
+/* 11/11 mobile: tin tức + kiến thức nổi bật dạng slide ngang */
+@media(max-width:640px){
+.news .news-grid{display:flex !important;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin-inline:-20px;padding:4px 20px 14px;scroll-padding-inline:20px;scrollbar-width:none}
+.news .news-grid::-webkit-scrollbar{display:none}
+.news .news-grid>*{flex:0 0 78%;max-width:78%;min-width:0;scroll-snap-align:start}
+}
