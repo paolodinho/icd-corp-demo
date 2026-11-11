@@ -1298,3 +1298,39 @@ body.menu-open .fab,body.menu-open .hotline-float{opacity:0;visibility:hidden;po
 #linhvuc[data-pa=h] .catalog-item p{display:none}
 #linhvuc[data-pa=h] .catalog-item h3,#linhvuc[data-pa=h] .catalog-item h3 a{font-size:18px}
 }
+/* 11/11 trang chủ: 2 khối tin khác nhịp để đỡ nhàm (máy tính >=900px; mobile giữ slide ngang) */
+@media(min-width:900px){
+/* Cập nhật từ ICD: 1 bài lớn chữ trên ảnh bên trái + 2 bài ngang bên phải */
+#news .news-grid{display:grid;grid-template-columns:7fr 5fr;grid-template-rows:1fr 1fr;gap:20px}
+#news .news-card{border-radius:12px;overflow:hidden}
+#news .news-card:first-child{grid-row:1/3;position:relative;border:0;min-height:520px;background:#16211D}
+#news .news-card:first-child .news-card__media{position:absolute!important;inset:0;aspect-ratio:auto!important;height:100%!important}
+#news .news-card:first-child .news-card__media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,20,15,0) 40%,rgba(10,20,15,.6) 65%,rgba(10,20,15,.92) 100%)}
+#news .news-card:first-child{justify-content:flex-end}#news .news-card:first-child .news-card__body{position:relative;z-index:1;flex:0 0 auto;margin-top:auto;background:none;padding:32px 34px}
+#news .news-card:first-child time{color:#7FE0A8}
+#news .news-card:first-child h3{color:#fff;font-size:28px;min-height:0;-webkit-line-clamp:2}
+#news .news-card:first-child p{color:rgba(255,255,255,.86);min-height:0;-webkit-line-clamp:2}
+#news .news-card:first-child .text-link{color:#FFB366}
+#news .news-card:not(:first-child){display:grid;grid-template-columns:42% 1fr}
+#news .news-card:not(:first-child) .news-card__media{aspect-ratio:auto!important;height:100%!important}
+#news .news-card:not(:first-child) .news-card__body{padding:20px 22px;justify-content:center}
+#news .news-card:not(:first-child) h3{font-size:18px;min-height:0;margin-top:8px}
+#news .news-card:not(:first-child) p{display:none}
+#news .news-card:not(:first-child) .text-link{margin-top:12px}
+#news .news-card:hover .news-card__media img{transform:scale(1.04)}
+#news .news-card__media img{transition:transform .5s cubic-bezier(.4,0,.2,1)}
+/* Kiến thức nổi bật: nền trắng, tiêu đề cột trái, danh sách đánh số bên phải */
+#kien-thuc{background:#fff;padding:clamp(64px,7vw,96px) 0}
+#kien-thuc .container{display:grid;grid-template-columns:4fr 8fr;gap:56px;align-items:start}
+#kien-thuc .news-head{flex-direction:column;align-items:flex-start;gap:28px;margin:0;position:sticky;top:110px}
+#kien-thuc .news-grid{display:block;counter-reset:kb;border-top:2px solid var(--ink,#16211D)}
+#kien-thuc .news-card{counter-increment:kb;display:grid;grid-template-columns:56px 200px 1fr;gap:24px;align-items:center;padding:24px 0;border:0;border-bottom:1px solid #E3E7E4;border-radius:0;background:none;box-shadow:none}
+#kien-thuc .news-card::before{content:counter(kb,decimal-leading-zero);font:700 28px var(--display,"Archivo");color:var(--orange,#FF8300);align-self:start;padding-top:4px}
+#kien-thuc .news-card__media{border-radius:8px;overflow:hidden}
+#kien-thuc .news-card__body{padding:0}
+#kien-thuc .news-card h3{font-size:19px;min-height:0;margin-top:6px;-webkit-line-clamp:2}
+#kien-thuc .news-card p{min-height:0;-webkit-line-clamp:2;margin-top:8px;font-size:14.5px}
+#kien-thuc .news-card .text-link{display:none}
+#kien-thuc .news-card:hover{transform:none;box-shadow:none}
+#kien-thuc .news-card:hover h3{color:var(--green-dk,#006F32)}
+}
