@@ -1333,3 +1333,15 @@ body.menu-open .fab,body.menu-open .hotline-float{opacity:0;visibility:hidden;po
 #kien-thuc .news-card:hover{transform:none;box-shadow:none}
 #kien-thuc .news-card:hover h3{color:var(--green-dk,#006F32)}
 }
+
+/* === 12/11: dải chủng loại trang sản phẩm (ảnh nào cũng có chú thích) - mỗi chủng loại 1 thẻ, tên dưới ảnh === */
+.album.album--types{display:grid!important;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:14px;margin:26px 0 34px}
+.album--types::after{display:none}
+.album--types .album__type{margin:0!important;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line,#E3E7E4);border-radius:8px;overflow:hidden}
+.album--types .album__item,.album--types .album__item:nth-child(n){position:relative;display:block;flex:none!important;aspect-ratio:4/3!important;background:#fff;grid-column:auto;grid-row:auto}
+.album--types .album__item img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:8px;box-sizing:border-box}
+.album--types .album__type figcaption{margin:0!important;padding:10px 12px 12px;border-top:1px solid var(--line,#E3E7E4);font:600 14.5px/1.35 var(--display,inherit);color:var(--green-900,#16211D);text-align:center;font-style:normal!important;text-wrap:balance}
+@media(max-width:1000px){.album.album--types{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:640px){.album.album--types{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.album--types .album__type figcaption{font-size:13px;padding:8px}}
+@media(max-width:1000px){.album.album--types[style*="--n:4"]{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.album--types .album__type:last-child:nth-child(odd){grid-column:1/-1}.album--types .album__type:last-child:nth-child(odd) .album__item{aspect-ratio:2/1!important}}
