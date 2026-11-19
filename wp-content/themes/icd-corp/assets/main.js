@@ -188,3 +188,8 @@
   if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting;sync()},{threshold:.25}).observe(w);else vis=true;
   [still,narrow].forEach(function(m){m.addEventListener&&m.addEventListener('change',sync)});sync();
 })();
+
+/* 19/11: thẻ lật - chạm lần 1 lật ra các đích, chạm ngoài thẻ thì lật lại (màn hình cảm ứng) */
+(function(){var f=[].slice.call(document.querySelectorAll('.flip[tabindex]'));if(!f.length)return;
+f.forEach(function(c){c.addEventListener('click',function(e){if(!window.matchMedia('(hover:none)').matches)return;if(!c.classList.contains('is-flip')){e.preventDefault();f.forEach(function(x){x.classList.remove('is-flip')});c.classList.add('is-flip')}})});
+document.addEventListener('click',function(e){if(!e.target.closest('.flip'))f.forEach(function(x){x.classList.remove('is-flip')})})})();
