@@ -193,3 +193,40 @@
 (function(){var f=[].slice.call(document.querySelectorAll('.flip[tabindex]'));if(!f.length)return;
 f.forEach(function(c){c.addEventListener('click',function(e){if(!window.matchMedia('(hover:none)').matches)return;if(!c.classList.contains('is-flip')){e.preventDefault();f.forEach(function(x){x.classList.remove('is-flip')});c.classList.add('is-flip')}})});
 document.addEventListener('click',function(e){if(!e.target.closest('.flip'))f.forEach(function(x){x.classList.remove('is-flip')})})})();
+
+/* 20/11: popup báo giá thay cho chuyển sang trang liên hệ */
+(function () {
+  var m = document.getElementById('quote-modal'); if (!m) return;
+  var form = m.querySelector('form'), msg = m.querySelector('.qmodal__msg'), prodEl = m.querySelector('.qmodal__prod'), last = null;
+  function open(prod, trigger) {
+    last = trigger || document.activeElement; msg.hidden = true; msg.className = 'qmodal__msg';
+    form.querySelectorAll('input:not([type=hidden]),textarea,button').forEach(function (e) { e.disabled = false; });
+    form.elements.product.value = prod || ''; prodEl.textContent = prod || ''; prodEl.hidden = !prod;
+    m.hidden = false; document.body.classList.add('qm-open');
+    setTimeout(function () { var f = form.elements.phone; if (f) f.focus(); }, 30);
+  }
+  function close() { m.hidden = true; document.body.classList.remove('qm-open'); if (last && last.focus) last.focus(); }
+  function sentry(url) { var m1 = /[?&]sent=([a-z]+)/.exec(url || ''); return m1 ? m1[1] : ''; }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a.btn[href]'); if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    var path; try { path = new URL(a.href, location.href).pathname.replace(/\/+$/, ''); } catch (x) { return; }
+    if (!/\/lien-he$/.test(path) || new URL(a.href, location.href).hash) return;
+    e.preventDefault();
+    var h1 = document.querySelector('.pdp h1, .pdp-info h1, main h1');
+    var onProd = !!document.querySelector('.pdp, #pdp-order, .pdp-main');
+    open(a.dataset.product || (onProd && h1 ? h1.textContent.trim() : ''), a);
+  });
+  m.addEventListener('click', function (e) { if (e.target === m || e.target.closest('.qmodal__close')) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !m.hidden) close(); });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ph = form.elements.phone.value.replace(/[\s.\-]/g, '').replace(/^\+?84/, '0');
+    if (!/^0([35789]\d{8}|2\d{9})$/.test(ph)) { msg.className = 'qmodal__msg err'; msg.textContent = m.dataset.badphone || 'Số điện thoại chưa đúng: 10 số di động hoặc 11 số máy bàn, ví dụ 0935 482 688.'; msg.hidden = false; form.elements.phone.focus(); return; }
+    var btn = form.querySelector('button[type=submit]'); btn.disabled = true;
+    fetch(form.action, { method: 'POST', body: new FormData(form), credentials: 'same-origin', redirect: 'follow' }).then(function (r) {
+      var s = sentry(r.url);
+      if (s === 'ok') { msg.className = 'qmodal__msg'; msg.textContent = m.dataset.ok || 'Cảm ơn bạn, ICD đã nhận yêu cầu và sẽ liên hệ sớm.'; msg.hidden = false; form.querySelectorAll('input:not([type=hidden]),textarea,button').forEach(function (x) { x.disabled = true; }); form.reset(); setTimeout(close, 2600); }
+      else throw new Error(s || 'x');
+    }).catch(function () { btn.disabled = false; msg.className = 'qmodal__msg err'; msg.textContent = m.dataset.err || 'Chưa gửi được. Vui lòng thử lại hoặc gọi hotline.'; msg.hidden = false; });
+  });
+})();
