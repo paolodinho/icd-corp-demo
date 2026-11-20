@@ -1500,3 +1500,7 @@ li > a > img + span{text-wrap:balance}
 .qmodal__form{gap:12px}.qmodal__form .btn{justify-self:stretch;width:100%}
 .qmodal__msg{padding:10px 12px;border-radius:6px;background:#E7F7EE;font-size:14px}.qmodal__msg.err{background:#FDECEA}
 body.qm-open{overflow:hidden}
+/* 20/11: ảnh thẻ SP tràn sát mép thẻ (bỏ lề 16px + margin 18px do .article__body img và .svc-prods a) */
+ul.svc-prods--img li>a{padding:0;display:flex;flex-direction:column}
+ul.svc-prods--img li>a>img{margin:0;max-width:none;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+ul.svc-prods--img li>a>span{padding:14px 16px 16px}
