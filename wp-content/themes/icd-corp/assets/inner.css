@@ -1738,7 +1738,7 @@ ul.svc-prods--img li>a>span{position:relative;padding:14px 18px 18px;border-top:
 ul.svc-prods--img li>a>span::after{content:"\2192";flex:0 0 auto;color:#C25F00;font-weight:700;transition:transform .25s}
 ul.svc-prods--img li>a:hover>span::after{transform:translateX(4px)}
 ul.svc-prods--img li>a:hover{border-color:#8FD0A9;box-shadow:0 18px 36px -14px rgba(0,110,55,.28)}
-ul.svc-prods--img.svc-types{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
+ul.svc-prods--img.svc-types{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:22px}
 ul.svc-prods--img.svc-types>li{flex:0 0 calc((100% - 44px)/3);max-width:calc((100% - 44px)/3)}
 @media(max-width:1000px){ul.svc-prods--img{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}ul.svc-prods--img.svc-types>li{flex-basis:calc((100% - 16px)/2);max-width:calc((100% - 16px)/2)}ul.svc-prods--img.svc-types{gap:16px}}
 @media(max-width:520px){ul.svc-prods--img{gap:12px}ul.svc-prods--img.svc-types{gap:12px}ul.svc-prods--img.svc-types>li{flex-basis:calc((100% - 12px)/2);max-width:calc((100% - 12px)/2)}ul.svc-prods--img li>a>img{padding:12px 12px 6px}ul.svc-prods--img li>a>span{padding:12px 12px 14px;font-size:14.5px}}
@@ -1772,3 +1772,10 @@ ul.svc-prods--img li>a>span{background:#fff}
 .page-template-page-dich-vu .article__body .svc-cta p:last-child a{display:inline-block;padding:12px 22px;border-radius:999px;background:#FF8300;color:#122019;font:700 15px/1 var(--display);text-decoration:none;transition:background .2s,transform .2s}
 .page-template-page-dich-vu .article__body .svc-cta p:last-child a:hover{background:#FFA23F;transform:translateY(-2px)}
 @media(max-width:760px){.page-template-page-dich-vu .article__body>ul:not([class]){padding:4px 18px}.page-template-page-dich-vu .article__body>p:first-child{font-size:18px}}
+
+/* 21/11 (Hiếu: không cân đối): mọi lưới ảnh sản phẩm dùng cùng 1 kiểu hàng 3 thẻ; từ 4 thẻ trở lên hàng cuối lẻ được canh giữa, ít hơn 4 thẻ thì thẳng lề trái với chữ */
+ul.svc-prods--img{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:22px}
+ul.svc-prods--img:has(>li:nth-child(4)){justify-content:center}
+ul.svc-prods--img>li{flex:0 0 calc((100% - 44px)/3);max-width:calc((100% - 44px)/3)}
+@media(max-width:1000px){ul.svc-prods--img{gap:16px}ul.svc-prods--img>li{flex-basis:calc((100% - 16px)/2);max-width:calc((100% - 16px)/2)}}
+@media(max-width:520px){ul.svc-prods--img{gap:12px}ul.svc-prods--img>li{flex-basis:calc((100% - 12px)/2);max-width:calc((100% - 12px)/2)}}
