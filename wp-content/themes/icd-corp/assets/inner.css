@@ -1713,3 +1713,17 @@ section.about-net .section-copy{font-weight:500}
   .hero:has(.hero-video)::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(4,36,20,.55) 0%,rgba(4,36,20,.3) 42%,rgba(4,36,20,.05) 76%),linear-gradient(0deg,rgba(0,0,0,.14),transparent 50%);pointer-events:none}
   .hero:has(.hero-video) .hero-dots{display:none}
 }
+
+/* 21/11/2026 (Hiếu): nền khối Lĩnh vực không xanh hẳn - TRẮNG chủ đạo, ngả xanh nhẹ, hiện đại (lưới mảnh + quầng xanh mờ). Trang chủ + Về ICD */
+.lvs,section.about-net{background:
+  radial-gradient(620px 380px at 6% 0%,rgba(0,176,80,.13),transparent 70%),
+  radial-gradient(700px 440px at 96% 100%,rgba(120,210,140,.20),transparent 70%),
+  linear-gradient(rgba(0,110,55,.055) 1px,transparent 1px) 0 0/56px 56px,
+  linear-gradient(90deg,rgba(0,110,55,.055) 1px,transparent 1px) 0 0/56px 56px,
+  linear-gradient(180deg,#F3FBF6 0%,#FBFEFC 52%,#EEF8F2 100%)}
+.lvs::before{height:4px;background:linear-gradient(90deg,var(--brand-green,#00B050) 0 30%,var(--orange) 30% 38%,transparent 38%)}
+.lvs__k,section.about-net .kicker{color:#0A6B35}
+.lvs__head h2,section.about-net .section-title{color:#0B2A1A}
+.lvs__head p,section.about-net .section-copy{color:#3F5A4B;font-weight:400}
+.lvs .lvc{border:1px solid #D7ECDF;box-shadow:0 1px 2px rgba(10,60,30,.05),0 14px 32px -10px rgba(0,110,55,.16)}
+.lvs .lvc:hover{border-color:#9ED7B3;box-shadow:0 2px 4px rgba(10,60,30,.06),0 22px 40px -12px rgba(0,120,55,.26)}
