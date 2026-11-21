@@ -1839,3 +1839,12 @@ ul.svc-prods--img.svc-car__track>li{flex:0 0 calc((100% - 44px)/3)!important;max
 .drawer>.btn{display:flex;justify-content:center;align-items:center;width:100%;height:50px;margin-top:22px;padding:0;border-radius:999px;background:#FF8300;color:#17221C;font:700 16px var(--display);box-sizing:border-box;border:0}
 .drawer>.btn::after{display:none}
 .drawer>a.btn{color:#17221C!important;font-weight:700!important}
+/* 21/11 mobile: Dự án đã bàn giao ở trang chủ dạng slide ngang */
+@media(max-width:760px){
+.projects .project-grid{display:flex!important;grid-template-columns:none!important;gap:14px!important;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin-inline:-20px;padding:4px 20px 12px;scroll-padding-inline:20px;scrollbar-width:none}
+.projects .project-grid::-webkit-scrollbar{display:none}
+.projects .project-grid>.project-card{flex:0 0 82%!important;max-width:82%;min-width:0;scroll-snap-align:start;height:auto!important}
+.m-bar{height:3px;border-radius:2px;background:#D5E6DB;margin:4px 0 0;position:relative;overflow:hidden}
+.m-bar i{position:absolute;top:0;bottom:0;left:0;border-radius:2px;background:#FF8300;transition:left .12s linear}
+}
+@media(min-width:761px){.m-bar{display:none}}

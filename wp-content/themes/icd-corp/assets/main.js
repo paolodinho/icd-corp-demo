@@ -281,3 +281,13 @@ document.addEventListener('click', function (e) { var a = e.target.closest && e.
     it.appendChild(b);
   });
 })();
+
+/* thanh tiến độ cho slide ngang trên di động (Dự án trang chủ) */
+(function(){
+  document.querySelectorAll('.projects .project-grid').forEach(function(g){
+    var bar=document.createElement('div');bar.className='m-bar';bar.innerHTML='<i></i>';g.parentNode.insertBefore(bar,g.nextSibling);
+    var i=bar.firstChild;
+    function up(){var sw=g.scrollWidth,cw=g.clientWidth;if(sw<=cw+2){bar.style.visibility='hidden';return}bar.style.visibility='';var w=cw/sw*100;i.style.width=w+'%';i.style.left=(g.scrollLeft/(sw-cw)*(100-w))+'%'}
+    g.addEventListener('scroll',up,{passive:true});window.addEventListener('resize',up);up();setTimeout(up,600);
+  });
+})();
