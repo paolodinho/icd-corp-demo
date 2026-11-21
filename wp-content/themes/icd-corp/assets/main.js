@@ -330,3 +330,64 @@ document.addEventListener('click', function (e) { var a = e.target.closest && e.
     start();
   });
 })();
+
+/* Khóa trục khi kéo ngang trên màn hình cảm ứng: đã kéo ngang một thanh trượt/bảng cuộn thì CHỈ chạy ngang, trang không trôi dọc theo; thả tay thì dừng gọn về đúng thẻ, không bật nảy */
+(function(){
+  if(!('ontouchstart' in window))return;
+  var st=null;
+  function hs(el){
+    while(el&&el.nodeType===1&&el!==document.body){
+      var cs=getComputedStyle(el);
+      if(/(auto|scroll)/.test(cs.overflowX)&&el.scrollWidth>el.clientWidth+2)return el;
+      el=el.parentElement;
+    }
+    return null;
+  }
+  function stopAnim(g){
+    if(g._rt){clearTimeout(g._rt);g._rt=0;if(g._done)g.removeEventListener('scrollend',g._done);g.style.scrollSnapType='none';g.style.scrollBehavior='auto';g.scrollTo({left:g.scrollLeft,behavior:'instant'})}
+  }
+  document.addEventListener('touchstart',function(e){
+    if(!e.touches||e.touches.length!==1){st=null;return}
+    var g=hs(e.target);if(!g){st=null;return}
+    stopAnim(g);
+    var t=e.touches[0];
+    st={g:g,x:t.clientX,y:t.clientY,sl:g.scrollLeft,axis:null,lx:t.clientX,lt:e.timeStamp,v:0,snap:getComputedStyle(g).scrollSnapType};
+  },{passive:true});
+  document.addEventListener('touchmove',function(e){
+    if(!st||!e.touches||e.touches.length!==1)return;
+    var t=e.touches[0],dx=t.clientX-st.x,dy=t.clientY-st.y;
+    if(!st.axis){
+      if(Math.abs(dx)<5&&Math.abs(dy)<5)return;
+      st.axis=Math.abs(dx)>Math.abs(dy)?'x':'y';
+      if(st.axis==='x'){st.g.style.scrollSnapType='none';st.g.style.scrollBehavior='auto'}
+    }
+    if(st.axis!=='x')return;
+    if(e.cancelable)e.preventDefault();
+    var dt=e.timeStamp-st.lt;
+    if(dt>0)st.v=st.v*.6+((st.lx-t.clientX)/dt)*.4;
+    st.lx=t.clientX;st.lt=e.timeStamp;
+    st.g.scrollLeft=st.sl-dx;
+  },{passive:false});
+  function end(){
+    if(!st)return;var s=st,g=s.g;st=null;
+    if(s.axis!=='x')return;
+    var max=g.scrollWidth-g.clientWidth,target=Math.max(0,Math.min(max,g.scrollLeft+s.v*240));
+    if(s.snap&&s.snap!=='none'){
+      var gl=g.getBoundingClientRect().left,cs=getComputedStyle(g),pad=parseFloat(cs.scrollPaddingLeft)||0,best=null,bd=1e9,kids=g.children;
+      for(var i=0;i<kids.length;i++){
+        var r=kids[i].getBoundingClientRect(),al=getComputedStyle(kids[i]).scrollSnapAlign,pos;
+        if(/center/.test(al))pos=r.left-gl+g.scrollLeft+r.width/2-g.clientWidth/2;
+        else pos=r.left-gl+g.scrollLeft-pad;
+        pos=Math.max(0,Math.min(max,pos));
+        var d=Math.abs(pos-target);if(d<bd){bd=d;best=pos}
+      }
+      if(best!==null)target=best;
+    }
+    g.style.scrollBehavior='smooth';
+    g.scrollTo({left:target,behavior:'smooth'});
+    var done=function(){clearTimeout(g._rt);g._rt=0;g.removeEventListener('scrollend',done);g.style.scrollSnapType='';g.style.scrollBehavior=''};
+    g._done=done;g.addEventListener('scrollend',done);g._rt=setTimeout(done,1600);
+  }
+  document.addEventListener('touchend',end,{passive:true});
+  document.addEventListener('touchcancel',end,{passive:true});
+})();
