@@ -1908,4 +1908,16 @@ html,body{overscroll-behavior-x:none}
 .arrow-ne{display:block;width:1em;height:1em}
 
 /* 21/11 footer: thẻ Facebook thấp lại để đáy thẳng hàng với cột logo, không đổi khoảng cách chữ */
-@media(min-width:1261px){.footer-fb__card .footer-fb__box{height:189px}}
+
+/* 21/11 footer vuông vắn: hàng trên = logo + 3 cột link; dải địa chỉ 3 ô đều; thẻ Facebook cao suốt 2 tầng bên phải */
+.footer-addr{list-style:none;margin:0;padding:22px 0 0;max-width:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px clamp(20px,3vw,44px);border-top:1px solid var(--line);grid-column:1/-1}
+.footer-addr li{margin:0}
+@media(max-width:760px){.footer-addr{grid-template-columns:1fr;padding-top:18px}.footer-grid>.footer-brand{order:-2}.footer-grid>.footer-addr{order:-1}}
+@media(min-width:1261px){
+.footer-grid{grid-template-columns:1.15fr 1.15fr .8fr 1.05fr 330px;grid-template-areas:"brand sp co ct fb" "addr addr addr addr fb";align-items:start;row-gap:30px}
+.footer-grid>.footer-brand{grid-area:brand}.footer-grid>div:nth-child(2){grid-area:sp}.footer-grid>div:nth-child(3){grid-area:co}.footer-grid>div:nth-child(4){grid-area:ct}
+.footer-grid>.footer-addr{grid-area:addr}.footer-grid>.footer-fb{grid-area:fb;align-self:stretch}
+.footer-fb{position:relative;display:block}.footer-fb h3{margin-bottom:0}.footer-fb__card{position:absolute;left:0;right:0;top:var(--fbtop,32px);bottom:0;display:flex;flex-direction:column;max-width:none}.footer-fb__card .footer-fb__box{flex:1;height:auto;min-height:0}
+}
+@media(min-width:761px) and (max-width:1260px){.footer-fb__card{max-width:520px}.footer-fb__card .footer-fb__box{height:230px}}
+@media(max-width:900px){.footer-bottom{flex-wrap:wrap;gap:6px 24px}}
