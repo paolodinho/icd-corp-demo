@@ -1859,3 +1859,14 @@ ul.svc-prods--img.svc-car__track>li{flex:0 0 calc((100% - 44px)/3)!important;max
 .abs-flow__list::before,.abs-flow__list::after{display:none}
 .abs-flow__wrap{overflow:visible}
 }
+/* 21/11 mobile: thẻ Fanpage gọn hơn (đầu thẻ nhỏ, khung bài đăng thấp) */
+@media(max-width:760px){
+.footer-fb h3{margin-bottom:8px}
+.footer-fb__card{max-width:none;border-radius:12px}
+.footer-fb__head{gap:10px;padding:8px 12px}
+.footer-fb__head>img{width:36px;height:36px}
+.footer-fb__head b{font-size:14px}
+.footer-fb__head span{font-size:11.5px}
+.footer-fb .footer-fb__card .footer-fb__go{padding:7px 14px;font-size:12.5px}
+.footer-fb__card .footer-fb__box{height:200px}
+}
