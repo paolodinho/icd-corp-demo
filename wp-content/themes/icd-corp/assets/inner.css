@@ -1877,3 +1877,26 @@ ul.svc-prods--img.svc-car__track>li{flex:0 0 calc((100% - 44px)/3)!important;max
 
 /* Không để trang bị kéo/nảy theo chiều ngang (cuộn chuột/trackpad, vuốt mép) */
 html,body{overscroll-behavior-x:none}
+
+/* 21/11 (Hiếu): nút nổi đè chữ trên di động. Gom Gọi, Messenger, Zalo, Lên đầu trang vào MỘT nút nhỏ, bấm mới xổ ra. */
+.fab-t{display:none}
+@media(max-width:760px){
+  .fab-t{display:grid;place-items:center;position:fixed;right:14px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:62;width:44px;height:44px;border-radius:50%;border:0;padding:0;background:#0F8A4F;color:#fff;box-shadow:0 6px 16px rgba(8,40,25,.3);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity .25s,transform .2s}
+  .fab-t svg{width:22px;height:22px;fill:#fff;grid-area:1/1;transition:opacity .2s,transform .2s}
+  .fab-t .x{opacity:0;transform:rotate(-90deg)}
+  body.fab-open .fab-t .c{opacity:0;transform:rotate(90deg)}
+  body.fab-open .fab-t .x{opacity:1;transform:none}
+  body.fab-idle:not(.fab-open) .fab-t{opacity:.4}
+  body .fab,body .hotline-float,body .backtop{opacity:0!important;visibility:hidden!important;pointer-events:none!important;transform:translateY(12px)!important;transition:opacity .22s,transform .22s,visibility .22s}
+  body.fab-open .fab,body.fab-open .hotline-float{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:none!important}
+  body.fab-open .backtop.show{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:none!important}
+  body .fab{gap:10px;right:14px!important;bottom:calc(196px + env(safe-area-inset-bottom))!important}
+  body .fab a{width:44px;height:44px}
+  body .fab svg{width:22px;height:22px}
+  body .hotline-float{right:14px!important;left:auto!important;bottom:calc(140px + env(safe-area-inset-bottom))!important;width:44px!important;height:44px!important;animation:none!important}
+  body .hotline-float i{width:36px!important;height:36px!important;animation:none!important}
+  body .hotline-float svg{width:18px!important;height:18px!important}
+  body .backtop{right:14px!important;left:auto!important;bottom:calc(304px + env(safe-area-inset-bottom))!important;width:44px!important;height:44px!important}
+  body.menu-open .fab-t{opacity:0;visibility:hidden;pointer-events:none}
+}
+@media(prefers-reduced-motion:reduce){.fab-t,.fab-t svg{transition:none}}
