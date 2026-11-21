@@ -1775,7 +1775,21 @@ ul.svc-prods--img li>a>span{background:#fff}
 
 /* 21/11 (Hiếu: không cân đối): mọi lưới ảnh sản phẩm dùng cùng 1 kiểu hàng 3 thẻ; từ 4 thẻ trở lên hàng cuối lẻ được canh giữa, ít hơn 4 thẻ thì thẳng lề trái với chữ */
 ul.svc-prods--img{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:22px}
-ul.svc-prods--img:has(>li:nth-child(4)){justify-content:center}
 ul.svc-prods--img>li{flex:0 0 calc((100% - 44px)/3);max-width:calc((100% - 44px)/3)}
 @media(max-width:1000px){ul.svc-prods--img{gap:16px}ul.svc-prods--img>li{flex-basis:calc((100% - 16px)/2);max-width:calc((100% - 16px)/2)}}
 @media(max-width:520px){ul.svc-prods--img{gap:12px}ul.svc-prods--img>li{flex-basis:calc((100% - 12px)/2);max-width:calc((100% - 12px)/2)}}
+
+/* 21/11 (Hiếu: nhiều thẻ thì để slideshow): băng trượt ngang cho danh sách ảnh sản phẩm từ 4 thẻ */
+.svc-car{position:relative;margin:22px 0 30px}
+ul.svc-prods--img.svc-car__track{display:flex!important;flex-wrap:nowrap!important;justify-content:flex-start!important;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;gap:22px!important;margin:0!important;padding:4px 2px 12px!important;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ul.svc-prods--img.svc-car__track::-webkit-scrollbar{display:none}
+ul.svc-prods--img.svc-car__track>li{flex:0 0 calc((100% - 44px)/3)!important;max-width:none!important;scroll-snap-align:start}
+.svc-car__btn{position:absolute;top:calc(50% - 44px);z-index:3;width:46px;height:46px;border-radius:50%;border:1px solid #CFE3D6;background:#fff;color:#0A6B35;font:400 30px/1 var(--display,sans-serif);padding:0 0 4px;cursor:pointer;display:grid;place-items:center;box-shadow:0 8px 22px -8px rgba(0,60,30,.35);transition:background .2s,color .2s,opacity .2s,transform .2s}
+.svc-car__btn:hover{background:#0A6B35;color:#fff;transform:scale(1.06)}
+.svc-car__btn:disabled{opacity:0;pointer-events:none}
+.svc-car__btn--prev{left:-14px}.svc-car__btn--next{right:-14px}
+.svc-car__bar{height:3px;border-radius:2px;background:#E1ECE5;margin:6px 2px 0;position:relative;overflow:hidden}
+.svc-car__bar i{position:absolute;top:0;bottom:0;border-radius:2px;background:#FF8300;transition:left .15s linear,width .2s}
+@media(max-width:1000px){ul.svc-prods--img.svc-car__track{gap:16px!important}ul.svc-prods--img.svc-car__track>li{flex-basis:calc((100% - 16px)/2)!important}.svc-car__btn--prev{left:-6px}.svc-car__btn--next{right:-6px}}
+@media(max-width:520px){ul.svc-prods--img.svc-car__track{gap:12px!important}ul.svc-prods--img.svc-car__track>li{flex-basis:78%!important}.svc-car__btn{width:38px;height:38px;font-size:26px;top:calc(50% - 38px)}}
+.nav-dd>a[href="#"]{cursor:default}

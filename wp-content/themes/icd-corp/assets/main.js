@@ -230,3 +230,42 @@ document.addEventListener('click',function(e){if(!e.target.closest('.flip'))f.fo
     }).catch(function () { btn.disabled = false; msg.className = 'qmodal__msg err'; msg.textContent = m.dataset.err || 'Chưa gửi được. Vui lòng thử lại hoặc gọi hotline.'; msg.hidden = false; });
   });
 })();
+
+/* 21/11/2026 (Hiếu: nhiều thẻ thì để slideshow): danh sách ảnh sản phẩm từ 4 thẻ trở lên thành băng trượt ngang, có nút trước/sau, thanh tiến độ, tự chạy chậm và dừng khi rê chuột/chạm */
+(function () {
+  var lists = document.querySelectorAll('ul.svc-prods--img');
+  if (!lists.length) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  lists.forEach(function (ul) {
+    if (ul.children.length < 4) return;
+    var wrap = document.createElement('div'); wrap.className = 'svc-car';
+    ul.parentNode.insertBefore(wrap, ul); wrap.appendChild(ul); ul.classList.add('svc-car__track');
+    function mk(cls, label, ch) { var b = document.createElement('button'); b.type = 'button'; b.className = 'svc-car__btn svc-car__btn--' + cls; b.setAttribute('aria-label', label); b.textContent = ch; wrap.appendChild(b); return b; }
+    var prev = mk('prev', 'Xem trước', '‹'), next = mk('next', 'Xem tiếp', '›');
+    var bar = document.createElement('div'); bar.className = 'svc-car__bar'; var fill = document.createElement('i'); bar.appendChild(fill); wrap.appendChild(bar);
+    function step() { var a = ul.children[0], b = ul.children[1]; return b ? b.offsetLeft - a.offsetLeft : a.offsetWidth; }
+    function view() { return Math.max(1, Math.round(ul.clientWidth / step())); }
+    function upd() {
+      var max = ul.scrollWidth - ul.clientWidth, x = ul.scrollLeft;
+      prev.disabled = x <= 2; next.disabled = x >= max - 2;
+      fill.style.width = Math.max(12, ul.clientWidth / ul.scrollWidth * 100) + '%';
+      fill.style.left = (max > 0 ? x / max * (100 - ul.clientWidth / ul.scrollWidth * 100) : 0) + '%';
+    }
+    function go(dir) { ul.scrollBy({ left: dir * step() * view(), behavior: 'smooth' }); }
+    prev.addEventListener('click', function () { go(-1); }); next.addEventListener('click', function () { go(1); });
+    ul.addEventListener('scroll', function () { window.requestAnimationFrame(upd); }, { passive: true }); window.addEventListener('resize', upd); upd();
+    if (reduce) return;
+    var paused = false, vis = false, t;
+    ['mouseenter', 'focusin', 'touchstart', 'pointerdown'].forEach(function (e) { wrap.addEventListener(e, function () { paused = true; }, { passive: true }); });
+    ['mouseleave', 'focusout'].forEach(function (e) { wrap.addEventListener(e, function () { paused = false; }); });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { vis = en[0].isIntersecting; }, { threshold: 0.4 }).observe(wrap); else vis = true;
+    t = setInterval(function () {
+      if (paused || !vis || document.hidden) return;
+      var max = ul.scrollWidth - ul.clientWidth;
+      if (ul.scrollLeft >= max - 2) ul.scrollTo({ left: 0, behavior: 'smooth' }); else go(1);
+    }, 5500);
+  });
+})();
+
+/* Mục menu "Sản phẩm và dịch vụ" có href="#": không nhảy lên đầu trang, chạm trên điện thoại thì mở/đóng danh sách */
+document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('.nav-dd > a[href="#"]'); if (a) e.preventDefault(); });
