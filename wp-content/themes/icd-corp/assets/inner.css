@@ -1900,3 +1900,6 @@ html,body{overscroll-behavior-x:none}
   body.menu-open .fab-t{opacity:0;visibility:hidden;pointer-events:none}
 }
 @media(prefers-reduced-motion:reduce){.fab-t,.fab-t svg{transition:none}}
+
+/* 21/11: khoi san pham khong con cot phai (trang robot) */
+.fld-sec__bd:not(:has(.svc-hub)){grid-template-columns:1fr}
