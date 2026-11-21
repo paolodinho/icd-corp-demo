@@ -1921,3 +1921,5 @@ html,body{overscroll-behavior-x:none}
 }
 @media(min-width:761px) and (max-width:1260px){.footer-fb__card{max-width:520px}.footer-fb__card .footer-fb__box{height:230px}}
 @media(max-width:900px){.footer-bottom{flex-wrap:wrap;gap:6px 24px}}
+/* 21/11 banner Về ICD: xe quét đường phố, giữ xe trong khung khi cắt ngang trên di động */
+.page-ve-icd .page-hero--image{background-position:76% 56%}
