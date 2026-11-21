@@ -1793,3 +1793,16 @@ ul.svc-prods--img.svc-car__track>li{flex:0 0 calc((100% - 44px)/3)!important;max
 @media(max-width:1000px){ul.svc-prods--img.svc-car__track{gap:16px!important}ul.svc-prods--img.svc-car__track>li{flex-basis:calc((100% - 16px)/2)!important}.svc-car__btn--prev{left:-6px}.svc-car__btn--next{right:-6px}}
 @media(max-width:520px){ul.svc-prods--img.svc-car__track{gap:12px!important}ul.svc-prods--img.svc-car__track>li{flex-basis:78%!important}.svc-car__btn{width:38px;height:38px;font-size:26px;top:calc(50% - 38px)}}
 .nav-dd>a[href="#"]{cursor:default}
+/* 21/11 khối Facebook chân trang: thẻ gọn, đầu thẻ riêng, nhúng chỉ hiện bài đăng */
+.footer-fb__card{max-width:360px;background:#fff;border:1px solid #E3E7E4;border-radius:14px;box-shadow:0 8px 24px rgba(20,30,25,.08);overflow:hidden}
+.footer-fb__head{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid #EEF1EF}
+.footer-fb__head>img{width:46px;height:46px;object-fit:contain;flex:none;border-radius:8px;background:#fff}
+.footer-fb__head>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.footer-fb__head b{font:700 15px/1.2 var(--display);color:#16211D}
+.footer-fb__head span{font:400 12px/1.3 var(--body);color:#5A635E}
+.footer-fb .footer-fb__card .footer-fb__go{display:inline-flex;width:auto;max-width:none;margin:0;padding:8px 16px;background:transparent;color:#006F32;border:1.5px solid #00863C;border-radius:999px;font:700 13px/1 var(--display);transition:background .15s ease,color .15s ease}
+.footer-fb .footer-fb__card .footer-fb__go:hover{background:#00863C;color:#fff}
+.footer-fb__card .footer-fb__box{max-width:none;height:340px;border:0;border-radius:0;box-shadow:none;background:#fff}
+.footer-fb__card .footer-fb__box iframe{height:760px;margin-top:-338px}
+@media(max-width:1260px) and (min-width:761px){.footer-fb__card{max-width:360px}}
+@media(max-width:760px){.footer-fb__card{max-width:360px}.footer-fb__card .footer-fb__box{height:340px}}
