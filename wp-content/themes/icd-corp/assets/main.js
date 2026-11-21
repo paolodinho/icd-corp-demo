@@ -302,3 +302,31 @@ document.addEventListener('click', function (e) { var a = e.target.closest && e.
     g.addEventListener('scroll',up,{passive:true});window.addEventListener('resize',up);up();setTimeout(up,600);
   });
 })();
+
+/* Slide ngang trên di động tự chạy: mỗi vài giây trượt sang thẻ kế, hết thì quay về đầu; chạm vào thì dừng, thả tay ~8 giây sau chạy lại; chỉ chạy khi đang nằm trong màn hình */
+(function(){
+  if(!window.matchMedia||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var mq=window.matchMedia('(max-width:760px)');
+  var sel='.projects .project-grid,.news .news-grid,#linh-vuc .lvc-grid,.abs-caps__grid,.abs-flow__list,.abs-logos';
+  document.querySelectorAll(sel).forEach(function(g,idx){
+    var visible=false,hold=0,timer=null;
+    function pause(){hold=Date.now()+8000}
+    ['touchstart','pointerdown','wheel','mousedown'].forEach(function(ev){g.addEventListener(ev,pause,{passive:true})});
+    function step(){
+      if(!mq.matches||!visible||Date.now()<hold||document.hidden)return;
+      var sw=g.scrollWidth,cw=g.clientWidth;if(sw<=cw+4)return;
+      if(g.scrollLeft+cw>=sw-4){g.scrollTo({left:0,behavior:'smooth'});return}
+      var gl=g.getBoundingClientRect().left,pad=parseFloat(getComputedStyle(g).scrollPaddingLeft)||0,kids=g.children;
+      for(var i=0;i<kids.length;i++){
+        var d=kids[i].getBoundingClientRect().left-gl-pad;
+        if(d>6){g.scrollBy({left:d,behavior:'smooth'});return}
+      }
+      g.scrollTo({left:0,behavior:'smooth'});
+    }
+    function start(){if(!timer)timer=setInterval(step,3200+idx*180)}
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){visible=es[0].isIntersecting},{threshold:.35}).observe(g);
+    }else visible=true;
+    start();
+  });
+})();
