@@ -1704,3 +1704,12 @@ section.about-net .section-copy{font-weight:500}
 .article__body .svc-hub__cta p{margin:0;max-width:none;font:600 clamp(18px,1.7vw,22px)/1.45 var(--display);color:var(--ink);text-wrap:balance}
 .article__body .svc-hub__cta .svc-hub__btn{flex:0 0 auto;white-space:nowrap;text-decoration:none;color:var(--ink)}
 @media(max-width:760px){.article__body .svc-hub__cta{flex-direction:column;align-items:flex-start}.article__body .svc-hub__cta .svc-hub__btn{width:100%;text-align:center}}
+
+/* 21/11 demo: video nền hero (desktop). Mobile giữ ảnh tĩnh để nhẹ dữ liệu. */
+.hero-video{display:none}
+@media (min-width:761px) and (prefers-reduced-motion:no-preference){
+  .hero-video{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;filter:saturate(1.05) contrast(1.04)}
+  .hero:has(.hero-video) .hero-slide{display:none}
+  .hero:has(.hero-video)::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(4,36,20,.55) 0%,rgba(4,36,20,.3) 42%,rgba(4,36,20,.05) 76%),linear-gradient(0deg,rgba(0,0,0,.14),transparent 50%);pointer-events:none}
+  .hero:has(.hero-video) .hero-dots{display:none}
+}
