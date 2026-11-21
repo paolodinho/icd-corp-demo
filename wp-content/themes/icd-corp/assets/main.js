@@ -291,3 +291,14 @@ document.addEventListener('click', function (e) { var a = e.target.closest && e.
     g.addEventListener('scroll',up,{passive:true});window.addEventListener('resize',up);up();setTimeout(up,600);
   });
 })();
+
+/* thanh tiến độ cho các slide ngang trang Về ICD (di động) */
+(function(){
+  document.querySelectorAll('#linh-vuc .lvc-grid,.abs-caps__grid,.abs-flow__list,.abs-logos').forEach(function(g){
+    var bar=document.createElement('div');bar.className='m-bar';bar.innerHTML='<i></i>';
+    var host=g.closest('.abs-flow__wrap')||g;host.parentNode.insertBefore(bar,host.nextSibling);
+    var i=bar.firstChild;
+    function up(){var sw=g.scrollWidth,cw=g.clientWidth;if(sw<=cw+2){bar.style.visibility='hidden';return}bar.style.visibility='';var w=cw/sw*100;i.style.width=w+'%';i.style.left=(g.scrollLeft/(sw-cw)*(100-w))+'%'}
+    g.addEventListener('scroll',up,{passive:true});window.addEventListener('resize',up);up();setTimeout(up,600);
+  });
+})();

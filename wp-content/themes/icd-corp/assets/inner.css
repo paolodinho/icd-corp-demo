@@ -1848,3 +1848,14 @@ ul.svc-prods--img.svc-car__track>li{flex:0 0 calc((100% - 44px)/3)!important;max
 .m-bar i{position:absolute;top:0;bottom:0;left:0;border-radius:2px;background:#FF8300;transition:left .12s linear}
 }
 @media(min-width:761px){.m-bar{display:none}}
+/* 21/11 mobile: trang Về ICD - các khối dài thành slide ngang */
+@media(max-width:760px){
+#linh-vuc .lvc-grid,.abs-caps__grid,.abs-flow__list,.abs-logos{display:flex!important;grid-template-columns:none!important;gap:14px!important;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin-inline:-20px;padding:4px 20px 12px;scroll-padding-inline:20px;scrollbar-width:none;align-items:stretch}
+#linh-vuc .lvc-grid::-webkit-scrollbar,.abs-caps__grid::-webkit-scrollbar,.abs-flow__list::-webkit-scrollbar,.abs-logos::-webkit-scrollbar{display:none}
+#linh-vuc .lvc-grid>.lvc,.abs-caps__grid>.abs-cap,.abs-logos>.abs-logo{flex:0 0 82%!important;max-width:82%;min-width:0;scroll-snap-align:start;height:auto}
+.abs-logos>.abs-logo{min-height:0}
+.abs-flow__list>li{flex:0 0 74%!important;max-width:74%;min-width:0;scroll-snap-align:start;grid-column:auto!important}
+.abs-flow__list{padding-top:14px}
+.abs-flow__list::before,.abs-flow__list::after{display:none}
+.abs-flow__wrap{overflow:visible}
+}
