@@ -2,7 +2,7 @@
   var toggle=document.querySelector('.menu-toggle'),drawer=document.querySelector('.drawer');
   if(toggle&&drawer){
     toggle.addEventListener('click',function(){var open=toggle.getAttribute('aria-expanded')==='true';toggle.setAttribute('aria-expanded',String(!open));drawer.classList.toggle('open',!open);document.body.classList.toggle('menu-open',!open)});
-    drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggle.setAttribute('aria-expanded','false');drawer.classList.remove('open');document.body.classList.remove('menu-open')})});
+    drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){if(a.getAttribute('href')==='#')return;toggle.setAttribute('aria-expanded','false');drawer.classList.remove('open');document.body.classList.remove('menu-open')})});
   }
   var mm=document.querySelector('.mbar__menu');
   if(mm&&toggle){mm.addEventListener('click',function(){toggle.click();mm.setAttribute('aria-expanded',toggle.getAttribute('aria-expanded'))})}
@@ -269,3 +269,15 @@ document.addEventListener('click',function(e){if(!e.target.closest('.flip'))f.fo
 
 /* Mục menu "Sản phẩm và dịch vụ" có href="#": không nhảy lên đầu trang, chạm trên điện thoại thì mở/đóng danh sách */
 document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('.nav-dd > a[href="#"]'); if (a) e.preventDefault(); });
+
+/* menu di động: gập mở nhóm */
+(function(){
+  var dr=document.querySelector('.drawer'); if(!dr) return;
+  var dd=dr.querySelector('.nav-dd'); if(dd){var a=dd.querySelector(':scope>a'); if(a){a.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var o=dd.classList.toggle('is-open');a.setAttribute('aria-expanded',String(o))})}}
+  dr.querySelectorAll('.nav-dd__item').forEach(function(it){
+    if(!it.querySelector('.nav-dd__sub')) return;
+    var b=document.createElement('button'); b.type='button'; b.className='nav-dd__tg'; b.setAttribute('aria-label','Mở rộng'); b.setAttribute('aria-expanded','false');
+    b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var o=it.classList.toggle('is-open');b.setAttribute('aria-expanded',String(o))});
+    it.appendChild(b);
+  });
+})();
