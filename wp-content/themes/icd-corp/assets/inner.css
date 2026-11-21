@@ -1906,3 +1906,6 @@ html,body{overscroll-behavior-x:none}
 
 /* 21/11: mui ten chuyen huong dung SVG (iOS hien ky tu ↗ thanh emoji xau) */
 .arrow-ne{display:block;width:1em;height:1em}
+
+/* 21/11 footer: thẻ Facebook thấp lại để đáy thẳng hàng với cột logo, không đổi khoảng cách chữ */
+@media(min-width:1261px){.footer-fb__card .footer-fb__box{height:189px}}
