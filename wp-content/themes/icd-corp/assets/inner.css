@@ -1705,14 +1705,15 @@ section.about-net .section-copy{font-weight:500}
 .article__body .svc-hub__cta .svc-hub__btn{flex:0 0 auto;white-space:nowrap;text-decoration:none;color:var(--ink)}
 @media(max-width:760px){.article__body .svc-hub__cta{flex-direction:column;align-items:flex-start}.article__body .svc-hub__cta .svc-hub__btn{width:100%;text-align:center}}
 
-/* 21/11 demo: video nền hero (desktop). Mobile giữ ảnh tĩnh để nhẹ dữ liệu. */
+/* 21/11 video nền hero: desktop dùng hero-demo.mp4 (ngang), di động dùng hero-demo-m.mp4 (dọc 4:5, 1MB). */
 .hero-video{display:none}
-@media (min-width:761px) and (prefers-reduced-motion:no-preference){
+@media (prefers-reduced-motion:no-preference){
   .hero-video{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;filter:saturate(1.05) contrast(1.04)}
   .hero:has(.hero-video) .hero-slide{display:none}
   .hero:has(.hero-video)::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(4,36,20,.55) 0%,rgba(4,36,20,.3) 42%,rgba(4,36,20,.05) 76%),linear-gradient(0deg,rgba(0,0,0,.14),transparent 50%);pointer-events:none}
   .hero:has(.hero-video) .hero-dots{display:none}
 }
+@media(max-width:760px){.hero:has(.hero-video)::after{background:linear-gradient(0deg,rgba(4,36,20,.94) 0,rgba(4,36,20,.82) 34%,rgba(4,36,20,.25) 62%,rgba(4,36,20,0) 80%)}.hero-video{object-position:center}}
 
 /* 21/11/2026 (Hiếu): nền khối Lĩnh vực không xanh hẳn - TRẮNG chủ đạo, ngả xanh nhẹ, hiện đại (lưới mảnh + quầng xanh mờ). Trang chủ + Về ICD */
 .lvs,section.about-net{background:
