@@ -1684,3 +1684,34 @@ ul.svc-prods--img li>a>span{padding:14px 16px 16px}
 .fld-band::-webkit-scrollbar{display:none}
 .article__body .fld-band a.fld{flex:0 0 78%;max-width:320px;scroll-snap-align:start}
 }
+
+/* 21/11/2026 nền khối Lĩnh vực sáng hơn + hiệu ứng nền chủ đề môi trường (trang chủ + Về ICD) */
+.lvs,section.about-net{position:relative;overflow:hidden;background:
+  radial-gradient(700px 460px at 3% 0,rgba(255,176,60,.42),transparent 70%),
+  radial-gradient(760px 540px at 100% 100%,rgba(205,255,140,.45),transparent 70%),
+  radial-gradient(520px 360px at 50% 40%,rgba(255,255,255,.10),transparent 75%),
+  radial-gradient(rgba(255,255,255,.16) 1.3px,transparent 1.4px) 0 0/24px 24px,
+  linear-gradient(160deg,#0F9A4B 0%,#0A8841 52%,#097B3D 100%)}
+.lvs__head p{font-weight:500}
+section.about-net>.container{position:relative;z-index:1}
+section.about-net .kicker{color:#fff}section.about-net .kicker::before,section.about-net .kicker::after{background:var(--orange)}
+section.about-net .section-title,section.about-net .section-copy{color:#fff}
+section.about-net .section-copy{font-weight:500}
+.env-fx{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.lvs>.container{z-index:1}
+.env-bub{position:absolute;bottom:-60px;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;border:1.5px solid rgba(255,255,255,.55);background:radial-gradient(circle at 30% 28%,rgba(255,255,255,.55),rgba(255,255,255,.08) 55%,transparent 70%);animation:envBub var(--t) linear var(--d) infinite}
+@keyframes envBub{0%{transform:translate(0,0) scale(.7);opacity:0}12%{opacity:.9}50%{transform:translate(18px,-45vh) scale(1)}100%{transform:translate(-14px,-95vh) scale(1.1);opacity:0}}
+.env-leaf{position:absolute;top:-50px;left:var(--x);width:30px;height:30px;color:rgba(200,245,96,.62);animation:envLeaf var(--t) ease-in-out var(--d) infinite}
+.env-leaf:nth-of-type(odd){color:rgba(255,255,255,.45)}
+@keyframes envLeaf{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:1}50%{transform:translate(calc(60px*var(--r)),50vh) rotate(calc(160deg*var(--r)))}100%{transform:translate(calc(-30px*var(--r)),105%) rotate(calc(340deg*var(--r)));opacity:0}}
+.env-rec{position:absolute;color:rgba(255,255,255,.17)}
+.env-rec svg{display:block;width:100%;height:100%;animation:envSpin 38s linear infinite}
+.env-rec--a{width:190px;height:190px;left:-46px;bottom:-40px}
+.env-rec--b{width:130px;height:130px;right:3%;top:8%}.env-rec--b svg{animation-direction:reverse;animation-duration:28s}
+@keyframes envSpin{to{transform:rotate(360deg)}}
+.env-star{position:absolute;left:var(--x);top:var(--y);width:16px;height:16px;color:#fff;animation:envTw 3.6s ease-in-out var(--d) infinite}
+@keyframes envTw{0%,100%{transform:scale(0) rotate(0);opacity:0}50%{transform:scale(1) rotate(90deg);opacity:.95}}
+.env-sweep{position:absolute;top:-10%;bottom:-10%;width:22%;left:-30%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.2),transparent);transform:skewX(-18deg);animation:envSweep 9s ease-in-out infinite}
+@keyframes envSweep{0%,12%{left:-30%}62%,100%{left:120%}}
+@media(prefers-reduced-motion:reduce){.env-fx *{animation:none!important}.env-bub,.env-leaf,.env-star,.env-sweep{display:none}}
+@media(max-width:760px){.env-rec--a{width:120px;height:120px}.env-rec--b{display:none}.env-bub:nth-child(n+8){display:none}}
