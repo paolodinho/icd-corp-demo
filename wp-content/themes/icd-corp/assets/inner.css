@@ -1698,3 +1698,9 @@ section.about-net>.container{position:relative;z-index:1}
 section.about-net .kicker{color:#062414}section.about-net .kicker::before,section.about-net .kicker::after{background:var(--orange)}
 section.about-net .section-title,section.about-net .section-copy{color:#062414}
 section.about-net .section-copy{font-weight:500}
+
+/* 21/11/2026 khung CTA cuối trang mẹ: thanh ngang, nút cam bên phải (thay khung ghi chú viền cam) */
+.article__body .svc-hub__cta{display:flex;align-items:center;justify-content:space-between;gap:24px 32px;margin-top:clamp(32px,4vw,52px);padding:clamp(22px,2.4vw,32px) clamp(24px,3vw,40px);background:linear-gradient(100deg,#EAF8EF 0%,#F6FBF8 100%);border:1px solid #CFE8D8;border-left:1px solid #CFE8D8;border-radius:16px}
+.article__body .svc-hub__cta p{margin:0;max-width:none;font:600 clamp(18px,1.7vw,22px)/1.45 var(--display);color:var(--ink);text-wrap:balance}
+.article__body .svc-hub__cta .svc-hub__btn{flex:0 0 auto;white-space:nowrap;text-decoration:none;color:var(--ink)}
+@media(max-width:760px){.article__body .svc-hub__cta{flex-direction:column;align-items:flex-start}.article__body .svc-hub__cta .svc-hub__btn{width:100%;text-align:center}}
