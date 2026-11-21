@@ -1870,3 +1870,6 @@ ul.svc-prods--img.svc-car__track>li{flex:0 0 calc((100% - 44px)/3)!important;max
 .footer-fb .footer-fb__card .footer-fb__go{padding:7px 14px;font-size:12.5px}
 .footer-fb__card .footer-fb__box{height:200px}
 }
+
+/* Thu nhỏ toàn trang 20% trên máy tính (>=1025px) theo ý Hiếu 21/11/2026: xem thử. Muốn bỏ: xoá khối này. */
+@media(min-width:1025px){html{zoom:.8}}
